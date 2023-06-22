@@ -31,4 +31,10 @@ export class WordComponent {
 
     return this.data.content;
   }
+  public opened = false;
+
+  toggleLemData(event: MouseEvent) {
+    event.stopPropagation();
+    this.opened = !this.opened;
+  }
 }

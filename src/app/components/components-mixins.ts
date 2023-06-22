@@ -12,9 +12,9 @@ import { HighlightDataIperlem } from '../models/evt-models';
 // tslint:disable-next-line: directive-class-suffix
 export class Highlightable {
   @Input() highlightData: HighlightData;
-  @Input() itemsToHighlight: EntitiesSelectItem[];
   @Input() highlightDataLem: HighlightDataLem;
   @Input() highlightDataIperlem: HighlightDataIperlem;
+  @Input() itemsToHighlight: EntitiesSelectItem[];
   @Input() itemsLemsToHighlight: LemsSelectItem[];
   @Input() itemsIperlemsToHighlight: IperlemsSelectItem[];
 

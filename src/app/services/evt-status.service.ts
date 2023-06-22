@@ -130,6 +130,8 @@ export class EVTStatusService {
     );
 
     public currentNamedEntityId$: BehaviorSubject<string> = new BehaviorSubject(undefined);
+    // add by FS
+    public currentLemmatizedEntityId$: BehaviorSubject<string> = new BehaviorSubject(undefined);
 
     constructor(
         private evtModelService: EVTModelService,
@@ -162,8 +164,13 @@ export class EVTStatusService {
             filter((id) => !!id),
             switchMap((id) => timer(5000).pipe(map(() => id))),
         ).subscribe(() => this.currentNamedEntityId$.next(undefined));
-    }
+        // add by FS
+        this.currentLemmatizedEntityId$.pipe(
+            filter(id => !!id),
+            switchMap(id => timer(5000).pipe(map(() => id))),
+        ).subscribe(() => this.currentLemmatizedEntityId$.next(undefined));
 
+    }
     getUrlFromStatus(status: AppStatus) {
         const params = {
             d: status.document || '',

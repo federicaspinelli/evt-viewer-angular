@@ -8,6 +8,11 @@ import { GenericElement } from '../../models/evt-models';
 import { ComponentRegisterService } from '../../services/component-register.service';
 import { EntitiesSelectService } from '../../services/entities-select.service';
 import { EntitiesSelectItem } from '../entities-select/entities-select.component';
+// add by FS 
+import { LemsSelectService } from '../../services/lems-select.service';
+import { LemsSelectItem } from '../lems-select/lems-select.component';
+import { IperlemsSelectService } from '../../services/iperlems-select.service';
+import { IperlemsSelectItem } from '../iperlems-select/iperlems-select.component';
 
 @Component({
   selector: 'evt-content-viewer',
@@ -28,9 +33,26 @@ export class ContentViewerComponent implements OnDestroy {
   }
   get itemsToHighlight() { return this.ith; }
 
+  private ithlems: LemsSelectItem[];
+  @Input() set itemsLemsToHighlight(i: LemsSelectItem[]) {
+    this.ithlems = i;
+    this.itemsLemsToHighlightChange.next(i);
+  }
+  get itemsLemsToHighlight() { return this.ithlems; }
+  
+  private ithiperlems: IperlemsSelectItem[];
+  @Input() set itemsIperlemsToHighlight(i: IperlemsSelectItem[]) {
+    this.ithiperlems = i;
+    this.itemsIperlemsToHighlightChange.next(i);
+  }
+
+  get itemsIperlemsToHighlight() { return this.ithiperlems; }
+
   contentChange = new BehaviorSubject<GenericElement>(undefined);
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
   itemsToHighlightChange = new BehaviorSubject<EntitiesSelectItem[]>([]);
+  itemsLemsToHighlightChange = new BehaviorSubject<LemsSelectItem[]>([]);
+  itemsIperlemsToHighlightChange = new BehaviorSubject<IperlemsSelectItem[]>([]);
 
   private edLevel: EditionLevelType;
   @Input() set editionLevel(el: EditionLevelType) {
@@ -51,7 +73,9 @@ export class ContentViewerComponent implements OnDestroy {
   constructor(
     private componentRegister: ComponentRegisterService,
     private entitiesSelectService: EntitiesSelectService,
-  ) {
+    private lemsSelectService: LemsSelectService,
+    private iperlemsSelectService: IperlemsSelectService,
+    ) {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -67,15 +91,21 @@ export class ContentViewerComponent implements OnDestroy {
   public inputs: Observable<{ [keyName: string]: any }> = combineLatest([
     this.contentChange,
     this.itemsToHighlightChange,
+    this.itemsLemsToHighlightChange,
+    this.itemsIperlemsToHighlightChange,
     this.editionLevelChange,
     this.textFlowChange,
   ]).pipe(
-    map(([data, itemsToHighlight, editionLevel, textFlow]) => {
+    map(([data, itemsToHighlight, itemsLemsToHighlight, itemsIperlemsToHighlight, editionLevel, textFlow]) => {
       if (this.toBeHighlighted()) {
         return {
           data,
           highlightData: this.getHighlightData(data, itemsToHighlight),
+          highlightDataLem: this.getHighlightDataLem(data, itemsLemsToHighlight),
+          highlightDataIperlem: this.getHighlightDataIperlem(data, itemsIperlemsToHighlight),
           itemsToHighlight,
+          itemsLemsToHighlight,
+          itemsIperlemsToHighlight,
           editionLevel,
           textFlow,
         };
@@ -122,6 +152,20 @@ export class ContentViewerComponent implements OnDestroy {
     return {
       highlight: ith?.some((i) => this.entitiesSelectService.matchClassAndAttributes(i.value, data?.attributes ?? {}, data?.class)) ?? false,
       highlightColor: this.entitiesSelectService.getHighlightColor(data?.attributes ?? {}, data?.class, ith),
+    };
+  }
+
+  private getHighlightDataLem(data, ithlems: LemsSelectItem[]) {
+    return {
+      highlight: ithlems?.some(i => this.lemsSelectService.matchClassAndAttributes(i.value, data?.attributes ?? {}, data?.class)) ?? false,
+      highlightColor: this.lemsSelectService.getHighlightColor(data?.attributes ?? {}, data?.class, ithlems),
+    };
+  }
+
+  private getHighlightDataIperlem(data, ithiperlems: IperlemsSelectItem[]) {
+    return {
+      highlight: ithiperlems?.some(i => this.iperlemsSelectService.matchClassAndAttributes(i.value, data?.attributes ?? {}, data?.class)) ?? false,
+      highlightColor: this.iperlemsSelectService.getHighlightColor(data?.attributes ?? {}, data?.class, ithiperlems),
     };
   }
 

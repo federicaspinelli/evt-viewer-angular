@@ -3,6 +3,8 @@ import { BehaviorSubject, of } from 'rxjs';
 import { EditionLevel } from '../../app.config';
 import { Page } from '../../models/evt-models';
 import { EntitiesSelectItem } from '../entities-select/entities-select.component';
+import { LemsSelectItem } from '../lems-select/lems-select.component';
+import { IperlemsSelectItem } from '../iperlems-select/iperlems-select.component';
 
 @Component({
   selector: 'evt-page',
@@ -11,6 +13,8 @@ import { EntitiesSelectItem } from '../entities-select/entities-select.component
 })
 export class PageComponent {
   @Input() itemsToHighlight: EntitiesSelectItem[];
+  @Input() itemsLemsToHighlight: LemsSelectItem[];
+  @Input() itemsIperlemsToHighlight: IperlemsSelectItem[];
   @Input() editionLevel: EditionLevel;
   @Input() textFlow: boolean;
 

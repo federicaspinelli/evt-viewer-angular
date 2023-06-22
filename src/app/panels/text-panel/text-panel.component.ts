@@ -3,6 +3,8 @@ import { BehaviorSubject, combineLatest, merge, Observable, Subject } from 'rxjs
 import { delay, distinctUntilChanged, filter, map, shareReplay, tap, withLatestFrom } from 'rxjs/operators';
 import { AppConfig, EditionLevel, EditionLevelType, TextFlow } from '../../app.config';
 import { EntitiesSelectItem } from '../../components/entities-select/entities-select.component';
+import { LemsSelectItem } from '../../components/lems-select/lems-select.component';
+import { IperlemsSelectItem } from '../../components/iperlems-select/iperlems-select.component';
 import { Page } from '../../models/evt-models';
 import { EVTModelService } from '../../services/evt-model.service';
 import { EVTStatusService } from '../../services/evt-status.service';
@@ -111,6 +113,8 @@ export class TextPanelComponent {
   );
 
   public itemsToHighlight$ = new Subject<EntitiesSelectItem[]>();
+  public itemsLemsToHighlight$ = new Subject<LemsSelectItem[]>();
+  public itemsIperlemsToHighlight$ = new Subject<IperlemsSelectItem[]>();
   public secondaryContent = '';
   private showSecondaryContent = false;
 

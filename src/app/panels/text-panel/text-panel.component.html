@@ -16,14 +16,18 @@
                     [attr.data-id]="page.id"
                     [data]="page"
                     [textFlow]="textFlow"
-                    [itemsToHighlight]="itemsToHighlight$ | async"></evt-page>
+                    [itemsToHighlight]="itemsToHighlight$ | async"
+                    [itemsLemsToHighlight]="itemsLemsToHighlight$ | async"
+                    [itemsIperlemsToHighlight]="itemsIperlemsToHighlight$ | async"></evt-page>
             </ng-container>
             <evt-page *ngIf="(isMultiplePageFlow$ | async) === false"
                 [attr.data-id]="currentStatus.currentPage.id"
                 [data]="currentStatus.currentPage"
                 [editionLevel]="currentStatus.editionLevel"
                 [textFlow]="textFlow"
-                [itemsToHighlight]="itemsToHighlight$ | async"></evt-page>
+                [itemsToHighlight]="itemsToHighlight$ | async"
+                [itemsLemsToHighlight]="itemsLemsToHighlight$ | async"
+                [itemsIperlemsToHighlight]="itemsIperlemsToHighlight$ | async"></evt-page>
         </ng-container>
     </div>
     <div secondary-content>
@@ -39,6 +43,8 @@
             [active]="secondaryContent === 'SEARCH_RESULTS'">
         </evt-button>
         <evt-entities-select (selectionChange)="itemsToHighlight$.next($event)"></evt-entities-select>
+        <evt-lems-select (selectionChange)="itemsLemsToHighlight$.next($event)"></evt-lems-select>
+        <evt-iperlems-select (selectionChange)="itemsIperlemsToHighlight$.next($event)"></evt-iperlems-select>
         <evt-button *ngIf="enableProseVersesToggler"
             [iconLeft]="proseVersesTogglerIcon"
             [label]="textFlow | translate"

@@ -53,6 +53,43 @@
   }
 }
 
+// add by FS 
+@mixin lemmatizedEntityRefColors($color-base, $color-middle, $color-darker) {
+  background: $color-base;
+  border-bottom-color: $color-middle;
+
+  &.active {
+    background-color: $color-middle;
+    border-right-color: $color-middle;
+
+    &:not(:first-child) {
+      border-left-color: $color-middle;
+    }
+  }
+
+  &:hover {
+    background-color: $color-middle;
+  }
+}
+
+@mixin iperlemmatizedEntityRefColors($color-base, $color-middle, $color-darker) {
+  background: $color-base;
+  border-bottom-color: $color-middle;
+
+  &.active {
+    background-color: $color-middle;
+    border-right-color: $color-middle;
+
+    &:not(:first-child) {
+      border-left-color: $color-middle;
+    }
+  }
+
+  &:hover {
+    background-color: $color-middle;
+  }
+}
+
 @mixin headerSectionTitle() {
   border-bottom: 1px dotted #666;
   margin-bottom: 5px;

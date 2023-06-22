@@ -37,12 +37,15 @@ import { EditionStmtComponent } from './components/edition-stmt/edition-stmt.com
 import { EditorialDeclComponent } from './components/editorial-decl/editorial-decl.component';
 import { EncodingDescComponent } from './components/encoding-desc/encoding-desc.component';
 import { EntitiesSelectComponent } from './components/entities-select/entities-select.component';
+//import { LemsSelectComponent } from './components/lems-select/lems-select.component';
+//import { IperlemsSelectComponent } from './components/iperlems-select/iperlems-select.component';
 import { ExtentComponent } from './components/extent/extent.component';
 import { FileDescComponent } from './components/file-desc/file-desc.component';
 import { GComponent } from './components/g/g.component';
 import { GapComponent } from './components/gap/gap.component';
 import { GenericElementComponent } from './components/generic-element/generic-element.component';
 import { GlobalListsComponent } from './components/global-lists/global-lists.component';
+//import { SpecificListsComponent } from './components/specific-lists/specific-lists.component';
 import { HistoryComponent } from './components/history/history.component';
 import { IdentifierComponent } from './components/identifier/identifier.component';
 import { LbComponent } from './components/lb/lb.component';
@@ -92,6 +95,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { HtmlAttributesDirective } from './directives/html-attributes.directive';
 import { EvtInfoComponent } from './evt-info/evt-info.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
+// add by FS to manage footer import { MainFooterComponent } from './main-footer/main-footer.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ImagePanelComponent } from './panels/image-panel/image-panel.component';
@@ -119,25 +123,23 @@ import { ReadingTextComponent } from './view-modes/reading-text/reading-text.com
 import { TextSourcesComponent } from './view-modes/text-sources/text-sources.component';
 import { TextTextComponent } from './view-modes/text-text/text-text.component';
 import { TextVersionsComponent } from './view-modes/text-versions/text-versions.component';
-import { HandleImgErrorDirective } from './directives/handle-img-error.directive';
-// add by FS 
 import { LemEntryComponent } from './components/lem-entry/lem-entry.component';
 import { LemEntryDetailComponent } from './components/lem-entry/lem-entry-detail/lem-entry-detail.component';
 import { LemEntryReadingsComponent } from './components/lem-entry/lem-entry-readings/lem-entry-readings.component';
+// add by FS 
 import { LemmatizedEntitiesListComponent } from './components/lemmatized-entities-list/lemmatized-entities-list.component';
 import { LemmatizedEntityRefComponent } from './components/lemmatized-entity-ref/lemmatized-entity-ref.component';
 import { LemmatizedEntityRelationComponent } from './components/lemmatized-entity-relation/lemmatized-entity-relation.component';
 import { LemmatizedEntityDetailComponent } from './components/lemmatized-entity/lemmatized-entity-detail/lemmatized-entity-detail.component';
 import { LemmatizedEntityOccurrenceComponent } from './components/lemmatized-entity/lemmatized-entity-occurrence/lemmatized-entity-occurrence.component';
 import { LemmatizedEntityComponent } from './components/lemmatized-entity/lemmatized-entity.component';
-
+import { HandleImgErrorDirective } from './directives/handle-img-error.directive';
 const routes: Routes = [
 ];
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
-
 const DynamicComponents = [
   AdditionalComponent,
   AdditionComponent,
@@ -170,6 +172,16 @@ const DynamicComponents = [
   NamedEntityDetailComponent,
   NamedEntityRefComponent,
   NamedEntityRelationComponent,
+  LemEntryComponent,
+  LemEntryDetailComponent,
+  LemEntryReadingsComponent,
+  // add by FS
+  LemmatizedEntitiesListComponent,
+  LemmatizedEntityComponent,
+  LemmatizedEntityDetailComponent,
+  LemmatizedEntityOccurrenceComponent,
+  LemmatizedEntityRefComponent,
+  LemmatizedEntityRelationComponent,
   NamespaceComponent,
   NoteComponent,
   NotesStmtComponent,
@@ -192,7 +204,6 @@ const DynamicComponents = [
   VersesGroupComponent,
   WordComponent,
 ];
-
 @NgModule({
   declarations: [
     AnnotatorDirective,
@@ -212,6 +223,7 @@ const DynamicComponents = [
     ImagePanelComponent,
     ImageTextComponent,
     MainHeaderComponent,
+    // MainFooterComponent,
     MainMenuComponent,
     ManuscriptThumbnailsViewerComponent,
     MsDescSectionComponent,
@@ -238,13 +250,6 @@ const DynamicComponents = [
     WitnessPanelComponent,
     XmlBeautifyPipe,
     ...DynamicComponents,
-    // add by FS
-    LemmatizedEntitiesListComponent,
-    LemmatizedEntityComponent,
-    LemmatizedEntityDetailComponent,
-    LemmatizedEntityOccurrenceComponent,
-    //LemmatizedEntityRefComponent,
-    LemmatizedEntityRelationComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -283,34 +288,13 @@ const DynamicComponents = [
   bootstrap: [
     AppComponent,
   ],
-  entryComponents: [
-    AdditionComponent,
-    EvtInfoComponent,
-    GlobalListsComponent,
-    //SpecificListsComponent,
-    NamedEntitiesListComponent,
-    NamedEntityComponent,
-    NamedEntityDetailComponent,
-    NamedEntityRefComponent,
-    NamedEntityRelationComponent,
-    ProjectInfoComponent,
-    ShortcutsComponent,
-    // add by FS 
-    LemmatizedEntitiesListComponent,
-    LemmatizedEntityComponent,
-    LemmatizedEntityDetailComponent,
-    LemmatizedEntityRefComponent,
-    LemmatizedEntityRelationComponent,
-  ],
 })
-export class AppModule implements DoBootstrap {
+export class AppModule  {
   constructor(
     library: FaIconLibrary,
   ) {
     library.addIconPacks(fas);
-
   }
-
   ngDoBootstrap(appRef: ApplicationRef): void {
     DynamicComponents.forEach((c) => appRef.bootstrap(c));
   }

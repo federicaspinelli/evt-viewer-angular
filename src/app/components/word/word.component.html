@@ -1,5 +1,5 @@
-<span class="word {{data.class}}" [evtHtmlAttributes]="data.attributes">
+<span class="word {{data.class}}" (click)="toggleLemData($event)" [evtHtmlAttributes]="data.attributes">
 	<evt-content-viewer *ngFor="let el of word" [content]="el" [editionLevel]="editionLevel" 
-		[itemsToHighlight]="itemsToHighlight" [evtHighlight]="highlightData">
+		[itemsToHighlight]="itemsToHighlight" [itemsLemsToHighlight]="itemsLemsToHighlight" [itemsIperlemsToHighlight]="itemsIperlemsToHighlight" [evtHighlight]="highlightData">
 	</evt-content-viewer>
 </span>

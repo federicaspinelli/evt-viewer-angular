@@ -1,5 +1,5 @@
 <span class="del" [attr.data-edition]="editionLevel" [attr.data-rend]="data.rend" [evtHtmlAttributes]="data?.attributes"
-    [evtHighlight]="highlightData" [evtEditorialConventionLayout]="editorialConventionData">
+    [evtHighlight]="highlightData"  [evtEditorialConventionLayout]="editorialConventionData">
     <evt-content-viewer *ngFor="let element of data.content" [content]="element" [editionLevel]="editionLevel"
-        [itemsToHighlight]="itemsToHighlight"></evt-content-viewer>
+        [itemsToHighlight]="itemsToHighlight" [itemsLemsToHighlight]="itemsLemsToHighlight" [itemsIperlemsToHighlight]="itemsIperlemsToHighlight"></evt-content-viewer>
 </span>
