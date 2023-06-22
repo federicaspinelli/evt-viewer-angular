@@ -120,6 +120,16 @@ import { TextSourcesComponent } from './view-modes/text-sources/text-sources.com
 import { TextTextComponent } from './view-modes/text-text/text-text.component';
 import { TextVersionsComponent } from './view-modes/text-versions/text-versions.component';
 import { HandleImgErrorDirective } from './directives/handle-img-error.directive';
+// add by FS 
+import { LemEntryComponent } from './components/lem-entry/lem-entry.component';
+import { LemEntryDetailComponent } from './components/lem-entry/lem-entry-detail/lem-entry-detail.component';
+import { LemEntryReadingsComponent } from './components/lem-entry/lem-entry-readings/lem-entry-readings.component';
+import { LemmatizedEntitiesListComponent } from './components/lemmatized-entities-list/lemmatized-entities-list.component';
+import { LemmatizedEntityRefComponent } from './components/lemmatized-entity-ref/lemmatized-entity-ref.component';
+import { LemmatizedEntityRelationComponent } from './components/lemmatized-entity-relation/lemmatized-entity-relation.component';
+import { LemmatizedEntityDetailComponent } from './components/lemmatized-entity/lemmatized-entity-detail/lemmatized-entity-detail.component';
+import { LemmatizedEntityOccurrenceComponent } from './components/lemmatized-entity/lemmatized-entity-occurrence/lemmatized-entity-occurrence.component';
+import { LemmatizedEntityComponent } from './components/lemmatized-entity/lemmatized-entity.component';
 
 const routes: Routes = [
 ];
@@ -228,6 +238,13 @@ const DynamicComponents = [
     WitnessPanelComponent,
     XmlBeautifyPipe,
     ...DynamicComponents,
+    // add by FS
+    LemmatizedEntitiesListComponent,
+    LemmatizedEntityComponent,
+    LemmatizedEntityDetailComponent,
+    LemmatizedEntityOccurrenceComponent,
+    //LemmatizedEntityRefComponent,
+    LemmatizedEntityRelationComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -265,6 +282,25 @@ const DynamicComponents = [
   ],
   bootstrap: [
     AppComponent,
+  ],
+  entryComponents: [
+    AdditionComponent,
+    EvtInfoComponent,
+    GlobalListsComponent,
+    //SpecificListsComponent,
+    NamedEntitiesListComponent,
+    NamedEntityComponent,
+    NamedEntityDetailComponent,
+    NamedEntityRefComponent,
+    NamedEntityRelationComponent,
+    ProjectInfoComponent,
+    ShortcutsComponent,
+    // add by FS 
+    LemmatizedEntitiesListComponent,
+    LemmatizedEntityComponent,
+    LemmatizedEntityDetailComponent,
+    LemmatizedEntityRefComponent,
+    LemmatizedEntityRelationComponent,
   ],
 })
 export class AppModule implements DoBootstrap {

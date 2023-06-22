@@ -1,0 +1,85 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/themes";
+@import "../../../assets/scss/mixins";
+
+.lemmatizedEntityRef {
+  &:not(.noDetails) {
+    cursor: pointer;
+    &.opened {
+      border-bottom: 3px solid rgba(208, 208, 208, 10);
+      font-weight: 600;
+      font-style: italic;
+      background-color: rgba(208, 208, 208, 0.5);
+    }
+  }
+  &:not(.opened):not(:hover) {
+    background-color: transparent;
+  }
+}
+
+.lemmatizedEntityRef:hover {
+    background-color:  rgba(208, 208, 208, 10);
+}
+
+.lemmatizedEntityRef:hover:not(.noDetails),
+.lemmatizedEntityRef.highlighted,
+.lemmatizedEntityRef.opened:not(.noDetails) {
+  &.lem {
+    @include lemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+  }
+  &.w {
+    @include lemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+  }
+}
+
+
+.iperlemmatizedEntityRef:hover:not(.noDetails),
+.iperlemmatizedEntityRef.highlighted,
+.iperlemmatizedEntityRef.opened:not(.noDetails) {
+&.lem {
+  @include iperlemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+}
+&.w {
+  @include iperlemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+}
+}
+
+.lemmatizedEntityRefDetail {
+  &.lem {
+    background: get-ne-color(lemBase);
+  }
+  &.w {
+    background: get-ne-color(lemBase);
+  }
+}
+.not-found-msg {
+  font-size: .9rem;
+}
+
+.lemmaHighlight {
+  background: rgba(208, 208, 208, 10)!important;
+}
+
+.iperlemmaHighlight {
+  background: rgba(208, 208, 208, 10)!important;
+}
+
+.ne-container.lem .ne-occurrence {
+  border-radius: 4px;
+  padding: 4px 6px;
+  background: rgba(208, 208, 208, 10);
+  margin-right: 3px;
+  font-size: 10rem;
+  margin-bottom: 3px;
+  display: inline-block !important;
+  cursor: pointer;
+  line-height: 10rem;
+}
+
+.lemmatizedEntityRef.highlighted {
+  background-color: rgba(208, 208, 208, 10);
+}
+
+.iperlemmatizedEntityRef.highlighted {
+  text-decoration: underline;
+}

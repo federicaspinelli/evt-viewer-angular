@@ -1,0 +1,6 @@
+<!-- Check if the lem entry is inside an lem detail (nested lem). In the lem detail it's not necessary to render the entire lem but only the lemma -->
+<span *ngIf="!isInsideLemDetail" class="lem-entry" [attr.data-variance]="variance$ | async" [ngClass]="{ 'lem-detail-opened': opened }">
+   <evt-reading class="lem-entry-lem" *ngIf="data?.lemma" [data]="data.lemma" (click)="toggleLemEntryBox($event);"></evt-reading>
+     <!-- The click event in "evt-lem-entry-detail" is used to manage nested apps -->
+    <evt-lem-entry-detail *ngIf="data?.lemma && opened" [data]="data" (click)="stopPropagation($event)"></evt-lem-entry-detail> 
+ </span>

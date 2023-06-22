@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { EntitiesSelectItemGroup } from './components/entities-select/entities-select.component';
+import { LemsSelectItemGroup } from './components/lems-select/lems-select.component';
+import { IperlemsSelectItemGroup } from './components/iperlems-select/iperlems-select.component';
 import { ViewMode, ViewModeId } from './models/evt-models';
 import { Attributes, EditorialConventionLayout } from './models/evt-models';
 
@@ -90,8 +92,17 @@ export interface EditionConfig {
         relations: NamedEntitiesListsConfig;
         events: NamedEntitiesListsConfig;
     }>;
+    // add by FS 
+    lemmatizedEntitiesLists: Partial<{
+        lemmas: LemmatizedEntitiesListsConfig;
+        iperlemmas: LemmatizedEntitiesListsConfig;
+        relations: LemmatizedEntitiesListsConfig;
+    }>;
+    lemsSelectItems: LemsSelectItemGroup[];
+    iperlemsSelectItems: IperlemsSelectItemGroup[];
     entitiesSelectItems: EntitiesSelectItemGroup[];
     notSignificantVariants: string[];
+    lemNotSignificantVariants: string[];
     defaultEdition: EditionLevelType;
     defaultViewMode: ViewModeId;
     proseVersesToggler: boolean;
@@ -126,6 +137,13 @@ export interface NamedEntitiesListsConfig {
     defaultLabel: string;
     enable: boolean;
 }
+
+// add by FS 
+export interface LemmatizedEntitiesListsConfig {
+    defaultLabel: string;
+    enabled: boolean;
+}
+
 export type EditionLevelType = 'diplomatic' | 'interpretative' | 'critical';
 export interface EditionLevel {
     id: EditionLevelType;

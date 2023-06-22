@@ -1,0 +1,23 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/themes';
+@import '../../../assets/scss/mixins';
+
+.relation-entity {
+    cursor: pointer;
+
+    &.disabled {
+        cursor: default;
+    }
+    &.lem {
+        @include lemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+        @include iperlemmatizedEntityRefColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+    }
+}
+
+.relation-type {
+    font-variant: small-caps;
+}
+
+.relation-description {
+    font-size: 90%;
+}

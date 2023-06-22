@@ -1,0 +1,22 @@
+<span class="lemmatizedEntityRef {{ data.entityLemType }} " (click)="toggleLemEntityData($event)" [ngClass]="{
+        opened: opened,
+        lemmaHighlight: (evtStatusService.currentLemmatizedEntityId$ | async) === data.entityLemId && !opened,
+        noDetails: (availableLemEntities$ | async) === false
+    }"  [evtHighlight]="highlightDataLem" [evtHtmlAttributes]="data?.attributes">
+    <span class="iperlemmatizedEntityRef {{ data.entityLemType }} " (click)="toggleLemEntityData($event)" [ngClass]="{
+        opened: opened,
+        iperlemmaHighlight: (evtStatusService.currentLemmatizedEntityId$ | async) === data.entityLemId && !opened,
+        noDetails: (availableLemEntities$ | async) === false
+    }"  [evtHighlight]="highlightDataIperlem" [evtHtmlAttributes]="data?.attributes">
+        <evt-content-viewer *ngFor="let element of data.content" [content]="element" [editionLevel]="editionLevel" [itemsLemsToHighlight]="itemsLemsToHighlight" [itemsIperlemsToHighlight]="itemsIperlemsToHighlight" [textFlow]="textFlow"></evt-content-viewer>
+    </span>
+</span>
+<ng-container *ngIf="availableLemEntities$ | async">
+    <div *ngIf="opened" class="lemmatizedEntityRefDetail {{ data.entityLemType }}">
+        <ng-container *ngIf="entity$ | async as entity; else loading">
+            <span *ngIf="entity === 'notFound'" class="d-block p-2 pl-3 font-italic font-weight-light not-found-msg">{{ 'entityNotFound' | translate }}</span>
+            <evt-lemmatized-entity *ngIf="entity !== 'notFound'" [inList]="true" [data]="entity"> </evt-lemmatized-entity>
+        </ng-container>
+        <ng-template #loading>Loading...</ng-template>
+    </div>
+</ng-container>

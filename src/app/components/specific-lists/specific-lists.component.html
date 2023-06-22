@@ -1,0 +1,51 @@
+<div class="row h-100 m-0">
+    <div class="bg-light col-3 p-0 border-right">
+        <ng-template ngFor let-lemlist [ngForOf]="lists$ | async">
+            <ng-template [ngTemplateOutlet]="listTemplate"
+                [ngTemplateOutletContext]="{ lemlist: lemlist, last: false }">
+            </ng-template>
+        </ng-template>
+        <div class="list-item border-bottom border-top" *ngIf="(relations$ | async).length > 0"
+            (click)="openRelations()">
+            <span class="list-item-main p-2 w-100 d-block edition-font">
+                <evt-icon [iconInfo]="{icon: 'network-wired', additionalClasses: 'mr-1'}"></evt-icon>
+                {{ 'relations' | translate }}
+                <span class="badge badge-pill badge-info ui-font">{{ (relations$ | async).length }}</span>
+            </span>
+        </div>
+    </div>
+    <div class="col-9 p-0">
+        <ng-container [ngSwitch]="showRelations">
+            <ng-container *ngSwitchCase="true">
+                <evt-content-viewer *ngFor="let relation of relations$ | async"
+                    [content]="relation"></evt-content-viewer> <!-- TODO: create component for relation list -->
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <evt-content-viewer *ngIf="selectedList" [content]="selectedList"></evt-content-viewer>
+            </ng-container>
+        </ng-container>
+        
+    </div>
+</div>
+
+<ng-template #listTemplate let-lemlist="lemlist" let-last="last">
+    <div class="list-item border-bottom" (click)="openLemList($event, lemlist)" [ngClass]="{
+        hidden: lemlist.content?.length === 0,
+        'bg-dark': selectedList === lemlist,
+        'text-light': selectedList === lemlist,
+        'border-bottom': !last
+    }">
+        <span class="list-item-main p-2 w-100 d-block edition-font">
+            <evt-icon *ngIf="lemlist.icon" [iconInfo]="{icon: lemlist.icon, additionalClasses: 'mr-1'}"></evt-icon>
+            {{lemlist.label | translate}}
+            <span class="badge badge-pill badge-info ui-font" *ngIf="lemlist.content?.length > 0">{{ lemlist.content?.length }}</span>
+        </span>
+        <div class="sub-list ml-3 border-left" *ngIf="lemlist.sublists.length > 0">
+            <ng-template ngFor let-sublist let-last [ngForOf]="lemlist.sublists">
+                <ng-template [ngTemplateOutlet]="listTemplate"
+                    [ngTemplateOutletContext]="{ lemlist: sublist, last: last }">
+                </ng-template>
+            </ng-template>
+        </div>
+    </div>
+</ng-template>

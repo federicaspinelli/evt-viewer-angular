@@ -19,6 +19,16 @@ export interface HighlightData {
     highlight: boolean;
     highlightColor: string;
 }
+// add by FS 
+export interface HighlightDataLem  {
+    highlightLem: boolean;
+    highlightColorLem: string;
+}
+
+export interface HighlightDataIperlem  {
+    highlightIperlem: boolean;
+    highlightColorIperlem: string;
+}
 
 export class GenericElement {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -79,6 +89,18 @@ export interface NamedEntities {
         entities: NamedEntity[];
     };
 }
+// add by FS 
+export interface LemmatizedEntities {
+    all: {
+        lemlists: LemmatizedEntitiesList[];
+        lementities: LemmatizedEntity[];
+    };
+    lemmas: {
+        lemlists: LemmatizedEntitiesList[];
+        lementities: LemmatizedEntity[];
+    };
+    relations: Relation[];
+}
 
 export interface Attributes { [key: string]: string; }
 
@@ -105,6 +127,50 @@ export class NamedEntity extends GenericElement {
     namedEntityType: NamedEntityType | 'personGrp';
     content: NamedEntityInfo[];
     originalEncoding: OriginalEncodingNodeType;
+}
+// add by FS - add here new tag for ER - add term
+
+export type LemmatizedEntityType = 'lem' | 'w' | 'list' | 'item' | 'term' ;
+export class LemmatizedEntitiesList extends GenericElement {
+    id: string;
+    label: string;
+    lemmatizedEntityType: LemmatizedEntityType;
+    description?: Description;
+    sublists: LemmatizedEntitiesList[];
+    content: LemmatizedEntity[];
+    relations: Relation[];
+    originalEncoding: OriginalEncodingNodeType;
+}
+
+export class LemmatizedEntity extends GenericElement {
+    id: string;
+    sortKey: string;
+    label: LemmatizedEntityLabel;
+    lemmatizedEntityType: LemmatizedEntityType | 'interpGrp';
+    content: LemmatizedEntityInfo[];
+    originalEncoding: OriginalEncodingNodeType;
+}
+
+export type LemmatizedEntityLabel = string;
+
+export class LemmatizedEntityInfo extends GenericElement {
+    label: string;
+}
+
+export interface LemmatizedEntityOccurrence {
+    pageId: string;
+    pageLabel: string;
+    refsByDoc: LemmatizedEntityOccurrenceRef[];
+}
+export interface LemmatizedEntityOccurrenceRef {
+    docId: string;
+    docLabel: string;
+    refs: GenericElement[];
+}
+
+export class LemmatizedEntityRef extends GenericElement {
+    entityLemId: string;
+    entityLemType: LemmatizedEntityType;
 }
 
 export type NamedEntityLabel = string;
@@ -168,6 +234,15 @@ export class ApparatusEntry extends GenericElement {
     notes: Note[];
     originalEncoding: string;
     nestedAppsIDs: string[];
+}
+/* add LemEntry FS */
+export class LemEntry extends GenericElement {
+    id: string;
+    lemma: Reading;
+    readings: Reading[];
+    notes: Note[];
+    originalEncoding: string;
+    nestedLemsIDs: string[];
 }
 
 export class Reading extends GenericElement {

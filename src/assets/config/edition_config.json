@@ -42,6 +42,17 @@
 		}
 	},
 	"showLists": true,
+
+	"lemmatizedEntitiesLists": {
+		"lemmas": {
+			"defaultLabel": "Lem",
+			"enabled": true
+		},
+		"iperlemmas": {
+			"defaultLabel": "Iperlem",
+			"enabled": true
+		}
+	},
 	"entitiesSelectItems": [
 		{
 			"label": "Named Entities",
@@ -95,6 +106,163 @@
 			],
 			"enable": true
 		}
+	],
+
+	"lemsSelectItems": [
+		{
+			"label": "Categorie grammaticali",
+			"items": [
+				
+				{
+					"value": "term",
+					"label": "Prova",
+					"color": "#F6F3EC"
+				},
+				{
+					"value": "w[pos='s.m.']",
+					"label": "Sostantivo maschile",
+					"color": "#F6F3EC"
+				},
+				{
+					"value": "w[pos='s.f.']",
+					"label": "Sostantivo femminile",
+					"color": "#EFE7E5"
+				},
+				{
+					"value": "w[pos='agg.']",
+					"label": "Aggettivo",
+					"color": "#D9C1A5"
+				},
+				{
+					"value": "w[pos='avv.']",
+					"label": "Avverbio",
+					"color": "#C8CBD0"
+				},
+				{
+					"value": "w[pos='n.p.']",
+					"label": "Nome proprio",
+					"color": "#AFB9C2"
+				},
+				{
+					"value": "w[pos='v.']",
+					"label": "Verbo",
+					"color": "rgba(148,162,173)"
+				}
+			]
+			
+		}
+	],
+	"iperlemsSelectItems": [
+		{
+		"label": "Iperlemmi",
+			"items": [			
+				{
+					"value": "w[type='abbigliamento e arredi']",
+					"label": "abbigliamento e arredi",
+					"color": "rgba(227, 218, 201, 0.50)"
+				},
+				{
+					"value": "w[type='alimenti']",
+					"label": "alimenti",
+					"color": "rgba(139, 93, 26, 0.50)"
+				},
+				{
+					"value": "w[type='animali']",
+					"label": "animali",
+					"color": "rgba(297, 218, 201, 0.50)"
+				},
+				{
+					"value": "w[type='arti e mestieri']",
+					"label": "arti e mestieri",
+					"color": "rgba(165, 161, 140, 0.62)"
+				},
+				{
+					"value": "w[type='calendario']",
+					"label": "calendario",
+					"color": "rgba(224, 189, 96, 0.52)"
+				},
+				{
+					"value": "w[type='diritto economia politica']",
+					"label": "diritto economia politica",
+					"color": "rgba(118, 105, 67, 0.52)"
+				},
+				{
+					"value": "w[type='edilizia e architettura']",
+					"label": "edilizia e architettura",
+					"color": "rgba(180, 161, 109, 0.65)"
+				},
+				{
+					"value": "w[type='materiali']",
+					"label": "materiali",
+					"color": "rgba(183, 111, 72, 0.65)"
+				},
+				{
+					"value": "w[type='medicina']",
+					"label": "medicina",
+					"color": "rgba(110, 43, 6, 0.46)"
+				},
+				{
+					"value": "w[type='metalli']",
+					"label": "metalli",
+					"color": "rgba(241, 190, 162, 0.46)"
+				},
+				{
+					"value": "w[type='militare']",
+					"label": "militare",
+					"color": "rgba(43, 81, 88, 0.42)"
+				},
+				{
+					"value": "w[type='monete']",
+					"label": "monete",
+					"color": "rgba(74, 117, 125, 0.42)"
+				},
+				{
+					"value": "w[type='navigazione']",
+					"label": "navigazione",
+					"color": "rgba(202, 237, 244, 0.42)"
+				},
+				{
+					"value": "w[type='parentele']",
+					"label": "parentele",
+					"color": "rgba(152, 22, 25, 0.42)"
+				},
+				{
+					"value": "w[type='pelletteria e tessili']",
+					"label": "pelletteria e tessili",
+					"color": "rgba(109, 16, 5, 0.54)"
+				},
+				{
+					"value": "w[type='pesi e misure']",
+					"label": "pesi e misure",
+					"color": "rgba(71, 10, 3, 0.54)"
+				},
+				{
+					"value": "w[type='preziosi']",
+					"label": "preziosi",
+					"color": "rgba(50, 8, 3, 0.4)"
+				},
+				{
+					"value": "w[type='spezie']",
+					"label": "spezie",
+					"color": "rgba(190, 172, 170, 0.4)"
+				},
+				{
+					"value": "w[type='tecnica']",
+					"label": "tecnica",
+					"color": "rgba(40, 70, 61, 0.4)"
+				},
+				{
+					"value": "w[type='utensili e mobilio']",
+					"label": "utensili e mobilio",
+					"color": "rgba(54, 80, 72, 0.48)"
+				},
+				{
+					"value": "w[type='vegetali']",
+					"label": "vegetali",
+					"color": "rgba(109, 93, 26, 0.50)"
+				}
+			]
+		}	
 	],
 	"notSignificantVariants": [
 		"type=orthographic"

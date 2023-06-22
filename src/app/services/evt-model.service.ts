@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
-import { NamedEntities, NamedEntityOccurrence, OriginalEncodingNodeType, Page, ZoneHotSpot, ZoneLine } from '../models/evt-models';
+import { NamedEntities, NamedEntityOccurrence, OriginalEncodingNodeType, Page, ZoneHotSpot, ZoneLine, LemmatizedEntities, LemmatizedEntityOccurrence } from '../models/evt-models';
 import { Map } from '../utils/js-utils';
 import { EditionDataService } from './edition-data.service';
 import { ApparatusEntriesParserService } from './xml-parsers/apparatus-entries-parser.service';
@@ -13,6 +13,8 @@ import { NamedEntitiesParserService } from './xml-parsers/named-entities-parser.
 import { PrefatoryMatterParserService } from './xml-parsers/prefatory-matter-parser.service';
 import { StructureXmlParserService } from './xml-parsers/structure-xml-parser.service';
 import { WitnessesParserService } from './xml-parsers/witnesses-parser.service';
+// add by FS
+import { LemmatizedEntitiesParserService } from './xml-parsers/lemmatized-entities-parser.service';
 
 @Injectable({
   providedIn: 'root',
@@ -104,6 +106,10 @@ export class EVTModelService {
     shareReplay(1),
   );
 
+  public lemsOccurrences$: Observable<Map<LemmatizedEntityOccurrence[]>> = this.pages$.pipe(
+    map((pages) => this.lemmatizedEntitiesParser.parseLemmatizedEntitiesOccurrences(pages)),
+    shareReplay(1),
+  );
   // WITNESSES
   public readonly witnessesData$ = this.editionSource$.pipe(
     map((source) => this.witnessesParser.parseWitnessesData(source)),
@@ -181,6 +187,44 @@ export class EVTModelService {
     map((source) => this.msDescParser.parseMsDesc(source)),
     shareReplay(1),
 );
+  // add by FS 
+  // LEMMA ENTITIES
+  public readonly parsedLemLists$ = this.editionSource$.pipe(
+    map((source) => this.lemmatizedEntitiesParser.parseLemLists(source)),
+    shareReplay(1),
+  );
+
+  // add by FS - add here new tag for LEMMI in the text - parser for element marked in the edition
+  
+  public readonly item$ = this.parsedLemLists$.pipe(
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term']))),
+  );
+
+  public readonly lemmas$ = this.parsedLemLists$.pipe(
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term']))),
+  );
+
+  public readonly lemmatizedEntities$: Observable<LemmatizedEntities> = combineLatest([
+    this.item$,
+    this.lemmas$,
+    this.relations$,
+  ]).pipe(
+    map(([item, lemmas, relations]) => ({
+      all: {
+        lemlists: [...item.lemlists, ...lemmas.lemlists],
+        lementities: [...item.lementities],
+      },
+      item,
+      lemmas,
+      relations,
+    })),
+    shareReplay(1),
+  );
+
+  public entitiesLemOccurrences$: Observable<Map<LemmatizedEntityOccurrence[]>> = this.pages$.pipe(
+    map((pages) => this.lemmatizedEntitiesParser.parseLemmatizedEntitiesOccurrences(pages)),
+    shareReplay(1),
+  );
 
   constructor(
     private editionDataService: EditionDataService,
@@ -193,6 +237,9 @@ export class EVTModelService {
     private characterDeclarationsParser: CharacterDeclarationsParserService,
     private linesVersesParser: LinesVersesParserService,
     private msDescParser: MsDescParserService,
+    // add by FS
+    private lemmatizedEntitiesParser: LemmatizedEntitiesParserService,
+
   ) {
   }
 

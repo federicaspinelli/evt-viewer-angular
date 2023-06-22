@@ -1,0 +1,158 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/themes";
+@import "../../../assets/scss/mixins";
+
+@mixin lemmatizedEntityColors($color-base, $color-middle, $color-darker) {
+    border-color: $color-middle;
+
+    * {
+      border-color: $color-middle;
+    }
+
+    .ne-header,
+    .ne-content {
+      background: $color-middle,
+    }
+
+  .ne-header {
+    position: relative;
+
+    evt-pinner {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  .nav-item,
+  .nav-item a {
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  ul.lem-details.nav li.nav-item a.ui-font.nav-link.active {
+    color: #000 !important;
+  }
+
+  .lem-details .nav-link {
+    color: #000 !important;
+    background-color: $color-middle;
+    border-color: $color-darker;
+
+    &.disabled {
+      pointer-events: auto;
+      cursor: not-allowed;
+    }
+  }
+
+  .ne-detail-content {
+    background-color: $color-darker;
+  }
+
+  .ne-occurrence {
+    border-radius: 4px;
+    padding: 4px 6px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-right: 3px;
+    font-size: .7rem;
+    margin-bottom: 3px;
+    display: inline-block !important;
+    cursor: pointer;
+    line-height: 0.9rem;
+
+    .ne-occurrence-count {
+      top: -1px;
+      position: relative;
+      margin-left: 5px;
+      border: 1px solid transparent;
+    }
+
+    &:hover {
+      background: rgba(167, 108, 108, 0.8) !important;
+
+      .ne-occurrence-count {
+        border: 1px solid #ccc;
+      }
+    }
+
+  }
+}
+
+:host ::ng-deep .ne {
+  &-container {
+    font-size: 90%;
+    border-top-left-radius: 0;
+
+    &.inList {
+      border-radius: 0;
+      margin-bottom: 1px;
+
+      .ne-header {
+        padding: 5px 7px;
+        border-top-right-radius: 0;
+        cursor: pointer;
+      }
+    }
+
+    &.contentOpened {
+      .ne-header {
+        border-bottom: 3px double #000 !important;
+      }
+    }
+
+    &.lem {
+      @include lemmatizedEntityColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+    }
+
+    &.w {
+      @include lemmatizedEntityColors(get-ne-color(lemBase), get-ne-color(lemMiddle), get-ne-color(lemDarker));
+    }
+  }
+
+  &-header {
+    padding: 3.5px 7px;
+    border-top-left-radius: 0;
+  }
+
+  &-content {
+    padding: 0;
+    font-size: 80%;
+  }
+
+  &-detail-content {
+    padding: 1rem;
+
+    &.no-padding {
+      padding: 0;
+    }
+  }
+}
+
+:host ::ng-deep .ne-content {
+
+  // Override default styles
+  .lem-details .nav-link {
+    padding: 5px;
+    border: none;
+  }
+}
+
+:host ::ng-deep pre {
+  padding-top: 0;
+  margin: 0;
+
+  background: #fff;
+  code {
+    font-size: 85% !important;
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  width: 100%;
+}

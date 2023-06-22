@@ -1,0 +1,57 @@
+<div [title]="'&lt;' + data.label + '&gt;' | lowercase">
+    <!-- <span class="icon">
+        <evt-icon [iconInfo]="iconData[data.label] || defaultIcon"></evt-icon>
+    </span> -->
+    <span class="label" *ngIf="data.label=='lem'">Lemma: </span>
+    <span class="label" *ngIf="data.label=='note'">
+        Note: 
+    </span> 
+    <span class="text">
+        <ng-container *ngFor="let element of data.content">
+            <evt-content-viewer [content]="element"></evt-content-viewer>
+            <ul class="attributes-list">
+                <div *ngFor="let item of element.attributes | keyvalue">
+                    <li *ngIf="item.key!=='lemmaRef' && data.label!=='div'">
+                        <span *ngIf="item.key==='norm' && item.key!=='lemmaRef'" class="label">Forma normalizzata: </span>
+                        <span *ngIf="item.key==='type' && item.key!=='lemmaRef'" class="label">Iperlemma: </span>
+                        <span *ngIf="item.key==='pos' && item.key!=='lemmaRef'" class="label">Categoria grammaticale: </span> 
+                        <span *ngIf="item.key!=='lemmaRef'">{{ item.value }}</span>
+                    </li>
+                </div>      
+            </ul>
+                    
+        </ng-container>
+        <span class="label" *ngIf="data.label=='lem'">
+            Risorse esterne<br/>Consulta il Tesoro della Lingua Italiana delle Origini 
+        </span>        
+        <span>
+            <ng-container *ngFor="let element of data.content; index as i; first as isFirst">
+                <ul class="attributes-list">
+                    <div *ngFor="let item of element.attributes| keyvalue">
+                        <li *ngIf="item.key==='lemmaRef' && data.label!=='lem' && data.label!='note' && data.label==='a' && item.key!=='pos' && item.key!=='norm' && item.key!=='type'">
+                            <div>
+                                <span (click)="openlinkLem()" [class.pointer]="linkLem">
+                                    <a class="icon-delete" class="ml-2 external-link-alt">
+                                    Definizione lemma 
+                                    <evt-icon [iconInfo]="{icon: 'external-link-alt', iconSet: 'fas'}"></evt-icon>
+                                    </a>
+                             
+                                </span> 
+                            </div>
+                        </li>
+                        <li *ngIf="item.key !=='lemmaRef' && data.label!=='a' && item.key!=='pos' && item.key!=='norm'">
+                            <div>
+                                <span (click)="openlinkTLIO()" [class.pointer]="linkLem">
+                                    <a class="icon-delete" class="ml-2 external-link-alt">
+                                    TLIO 
+                                    <evt-icon [iconInfo]="{icon: 'external-link-alt', iconSet: 'fas'}"></evt-icon>
+                                    </a>
+                                </span> 
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </ng-container>
+        </span>
+    </span>
+</div>
