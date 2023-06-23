@@ -181,4 +181,76 @@ body {
     padding: 0;
     font-size: 0.9rem;
 }
+// add by FS to manage in scss specific files
 
+ul.lem-details.nav li.nav-item a.ui-font.nav-link {
+    color: #000 !important;
+}
+
+ul.lem-details.nav li.nav-item a.ui-font.nav-link.active {
+    background-color: #f7f7f7;
+}
+
+evt-lemmatized-entity.ng-star-inserted div.ne-detail-content.ng-star-inserted {
+    background-color: #f7f7f7;
+}
+
+.ne-occurrence {
+    border-radius: 4px;
+    padding: 4px 6px;
+    background: rgba(255, 255, 255, 0.5);
+    margin-right: 3px;
+    font-size: .7rem;
+    margin-bottom: 3px;
+    display: inline-block !important;
+    cursor: pointer;
+    line-height: 0.9rem;
+
+    .ne-occurrence-count {
+      top: -1px;
+      position: relative;
+      margin-left: 5px;
+      border: 1px solid transparent;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.8) !important;
+
+      .ne-occurrence-count {
+        border: 1px solid #ccc;
+      }
+    }
+
+}
+
+// Provvisorio 
+.lemmatizedEntityRef.highlighted {
+    background-color: antiquewhite;
+}
+
+.iperlemmatizedEntityRef.highlighted {
+    text-decoration: underline antiquewhite ;
+}
+
+.external-link-alt {
+    color: #000;
+}
+
+#abcb9a36175c{
+  display: hidden !important;
+}
+
+.popower-body evt-text {
+    text-transform: uppercase !important;
+}
+
+span.iperlemmatizedEntityRef.w.highlight {
+    font-weight: 700;
+}
+.btn {
+    &.active {
+        @include themify($themes) {
+            background: themed("toolsColorActive") !important;
+        }
+    }
+}

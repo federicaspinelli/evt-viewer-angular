@@ -172,5 +172,11 @@
     "moreInfoAboutApp": "More info about the apparatus entry",
     "omit": "omit.",
     "wit": "Wit:",
-    "xml": "XML"
+    "xml": "XML",
+    "selectLemsItems": "Select lems",
+    "selectIperlemsItems": "Select iperlems",
+    "selectLemsAll": "Select all lems",
+    "clearLemsAll": "Clear all lems",
+    "selectIperlemsAll": "Select all iperlems",
+    "clearIperlemsAll": "Clear all iperlems"
 }

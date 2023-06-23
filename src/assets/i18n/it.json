@@ -171,5 +171,11 @@
     "moreInfoAboutApp": "Maggiori informazioni per l'entrata d'apparato",
     "omit": "omit.",
     "wit": "Wit:",
-    "xml": "XML"
+    "xml": "XML",
+    "selectLemsItems": "Seleziona categorie grammaticali",
+    "selectIperlemsItems": "Seleziona iperlemmi",
+    "selectLemsAll": "Seleziona tutto",
+    "clearLemsAll": "Pulisci selezione",
+    "selectIperlemsAll": "Seleziona tutto",
+    "clearIperlemsAll": "Pulisci selezione"
 }

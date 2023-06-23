@@ -1,0 +1,12 @@
+Edition config:
+"value": "w[pos='s.m.']",
+
+Edizione:
+<w n="00b_1" type="calendario" ref="#2448" pos="s.m.">dice</w>
+
+Main:
+<item type="lem" xml:id="2448">
+    <lem type="calendario" norm="dicembre" pos="s.m.">dicembre</lem>
+    <a lemmaRef="http://tlio.ovi.cnr.it/voci/014076.htm"></a>
+</item>
+

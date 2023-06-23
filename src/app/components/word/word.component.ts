@@ -16,7 +16,7 @@ export class WordComponent {
   @Input() data: Word;
 
   get word() {
-    if (this.editionLevel === 'diplomatic') {
+    if (this.editionLevel === 'diplomatic'  || this.editionLevel === 'interpretative') {
       return this.data.content;
     }
 
@@ -31,6 +31,7 @@ export class WordComponent {
 
     return this.data.content;
   }
+  
   public opened = false;
 
   toggleLemData(event: MouseEvent) {

@@ -1,5 +1,5 @@
 {
-	"editionUrls": ["assets/data/edition.xml"],
+	"editionUrls": ["assets/data/main.xml"],
 	"editionImagesSource": {
 		"manifest": {
 			"value": "https://www.e-codices.unifr.ch/metadata/iiif/csg-0730/manifest.json",

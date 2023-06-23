@@ -24,7 +24,10 @@ $editionColors: (
     versesBackground: #800000,
     versesColor: #ffffff,
     versesBorder: #000000,
-    highlightColor: #ffffcc
+    highlightColor: #ffffcc,
+    lemmatizedEntities: (
+        lemBase:  #FFE9C9,
+    )
 );
 
 @function get-color($key) {
@@ -33,4 +36,6 @@ $editionColors: (
 
 @function get-ne-color($key) {
     @return get-color(namedEntities $key);
+    @return get-color(lemmatizedEntities $key);
+    @return get-color(iperlemmatizedEntities $key);
 }

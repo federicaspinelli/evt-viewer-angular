@@ -32,10 +32,21 @@ export class ParserRegister {
             return 'evt-apparatus-entry-parser';
         }
 
+
+        // add by FS - add here new tag for CPD
+        const neslem = ['w', 'lem', 'term'];
+        if (neslem.includes(tagName)) {
+            return 'evt-lemmatized-entity-parser';
+        }
+        const nelslem = ['list', 'div[type="glossary"]'];
+        if (nelslem.includes(tagName)) {
+            return 'evt-lemmatized-entities-list-parser';
+        }
+
         if (!Object.keys(ParserRegister.PARSER_MAP).includes(tagName)) {
             return 'evt-generic-elem-parser';
         }
-
+        
         return tagName;
     }
 }
