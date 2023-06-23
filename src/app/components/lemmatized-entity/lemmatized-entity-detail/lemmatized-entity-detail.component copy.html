@@ -1,9 +1,13 @@
 <div [title]="'&lt;' + data.label + '&gt;' | lowercase">
-    <span class="label" *ngIf="data.label=='form'">Form: </span>
-    <span class="label" *ngIf="data.label!=='lem' && data.label=='note'">
+    <!-- <span class="icon">
+        <evt-icon [iconInfo]="iconData[data.label] || defaultIcon"></evt-icon>
+    </span> -->
+    <span class="label" *ngIf="data.label=='lem'">Lemma: </span>
+    <span class="label" *ngIf="data.label=='form'">Form in progress: </span>
+    <span class="label" *ngIf="data.label=='note'">
         Note: 
     </span> 
-    <span class="text" >
+    <span class="text">
         <ng-container *ngFor="let element of data.content">
             <evt-content-viewer [content]="element"></evt-content-viewer>
             <ul class="attributes-list">
@@ -20,7 +24,7 @@
         </ng-container>
         <span class="label" *ngIf="data.label=='lem'">
             Risorse esterne<br/>Consulta il Tesoro della Lingua Italiana delle Origini 
-        </span>     
+        </span>        
         <span>
             <ng-container *ngFor="let element of data.content; index as i; first as isFirst">
                 <ul class="attributes-list">

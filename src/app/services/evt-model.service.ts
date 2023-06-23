@@ -197,11 +197,11 @@ export class EVTModelService {
   // add by FS - add here new tag for LEMMI in the text - parser for element marked in the edition
   
   public readonly item$ = this.parsedLemLists$.pipe(
-    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry']))),
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry', 'gloss', 'form']))),
   );
 
   public readonly lemmas$ = this.parsedLemLists$.pipe(
-    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry']))),
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry', 'gloss', 'form']))),
   );
 
   public readonly lemmatizedEntities$: Observable<LemmatizedEntities> = combineLatest([

@@ -316,9 +316,22 @@ export class DeletionParser extends EmptyParser implements Parser<XMLElement> {
         };
     }
 }
-
+// add by FS to manage term and gloss
 @xmlParser('term', TermParser)
 export class TermParser extends GenericElemParser implements Parser<XMLElement> {
+    parse(xml: XMLElement): Term {
+        return {
+            ...super.parse(xml),
+            type: Term,
+            id: xml.getAttribute('xml:id'),
+            ref: xml.getAttribute('ref'),
+            rend: xml.getAttribute('rend'),
+        };
+    }
+}
+
+@xmlParser('gloss', TermParser)
+export class GlossParser extends GenericElemParser implements Parser<XMLElement> {
     parse(xml: XMLElement): Term {
         return {
             ...super.parse(xml),

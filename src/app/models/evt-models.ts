@@ -128,9 +128,8 @@ export class NamedEntity extends GenericElement {
     content: NamedEntityInfo[];
     originalEncoding: OriginalEncodingNodeType;
 }
-// add by FS - add here new tag for ER - add term
-
-export type LemmatizedEntityType = 'lem' | 'w' | 'list' | 'item' | 'term' ;
+// add by FS - add here new tag for ER - add term and gloss
+export type LemmatizedEntityType = 'lem' | 'w' | 'list' | 'item' | 'term' | 'gloss' | 'form' | 'entry' ;
 export class LemmatizedEntitiesList extends GenericElement {
     id: string;
     label: string;

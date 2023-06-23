@@ -31,6 +31,8 @@
          <div xml:id="div" n="DATINI">
             
          <div><p><pb n="00b c. 1" xml:id="00b_1" facs="NO_IMAGE/NO_IMAGE.jpg" />
+               <term ref="#entry">entry</term>
+               <term ref="#item">item</term>
                <term ref="#amasiamentum1">amasiamentum 1</term>
                <term ref="#amasiamentum2">amasiamentum 2</term>
                <gloss ref="#amasiamentum3">amasiamentum 3</gloss>

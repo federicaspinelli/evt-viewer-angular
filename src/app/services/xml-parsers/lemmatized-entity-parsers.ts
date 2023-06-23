@@ -96,6 +96,7 @@ export class LemmatizedEntityRefParser extends EmptyParser implements Parser<XML
             lem: 'lem',
             item: 'item',
             term: 'term',
+            gloss: 'gloss',
         };
 
         return {
@@ -158,6 +159,8 @@ export class ItemParser extends EntityParser {
         const wElement = xml.querySelector<XMLElement>('w');
         const lemElement = xml.querySelector<XMLElement>('lem');
         const termElement = xml.querySelector<XMLElement>('term');
+        const glossElement = xml.querySelector<XMLElement>('gloss');
+        const entryElement = xml.querySelector<XMLElement>('entry');
         let label: LemmatizedEntityLabel;
         if (itemElement) {
             label = replaceNewLines(itemElement.textContent);
@@ -166,7 +169,11 @@ export class ItemParser extends EntityParser {
         } else if (lemElement) {
             label = lemElement ? `${replaceNewLines(lemElement.textContent)} ` : '';
         } else if (termElement) {
-        label = termElement ? `${replaceNewLines(termElement.textContent)} ` : '';
+            label = termElement ? `${replaceNewLines(termElement.textContent)} ` : '';
+        } else if (glossElement) {
+            label = termElement ? `${replaceNewLines(glossElement.textContent)} ` : '';
+        } else if (entryElement) {
+            label = entryElement ? `${replaceNewLines(entryElement.textContent)} ` : '';
     }
         return label;
     }

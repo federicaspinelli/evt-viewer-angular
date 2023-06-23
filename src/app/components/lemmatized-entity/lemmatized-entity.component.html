@@ -18,6 +18,10 @@
         <evt-icon *ngIf="data.lemmatizedEntityType === 'term'"
             [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
         </evt-icon>
+        <!-- add by FS to manage lemma gloss -->
+        <evt-icon *ngIf="data.lemmatizedEntityType === 'gloss'"
+            [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
+        </evt-icon>
         {{ data.label }}
         <evt-pinner [item]="data" renderer="LemmatizedEntity" pinType="LemmatizedEntities"></evt-pinner>
     </div>

@@ -119,6 +119,11 @@
 					"color": "#F6F3EC"
 				},
 				{
+					"value": "gloss",
+					"label": "Prova",
+					"color": "#F6F3EC"
+				},
+				{
 					"value": "w[pos='s.m.']",
 					"label": "Sostantivo maschile",
 					"color": "#F6F3EC"

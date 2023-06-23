@@ -86,7 +86,6 @@
 <ng-template #nestedLemsReadingsTemplate let-rdgHasCounter="rdgHasCounter">
     <ng-container *ngFor="let c of data.lemma.content">
         <evt-content-viewer *ngIf="!isLemEntry(c)" class="{{ data.class }}" [content]="c"></evt-content-viewer>
-
         <ng-container *ngIf="isLemEntry(c)">
             <!-- Handle reading of nested app with no further nesting -->
             <evt-reading [data]="c.lemma"></evt-reading>
