@@ -8,8 +8,8 @@ import { createParser, parseChildren, Parser } from './parser-models';
 
 // add by FS - add here new tag for CPD
 export const lemmatizedEntitiesListsTagNamesMap: { [key: string]: string } = {
-    lemmas: 'list',
-    occurrences: 'w[ref], lem[ref]',
+    lemmas: 'list, div[type="glossary"]', 
+    occurrences: 'w[ref], lem[ref], term[ref], gloss[ref]',
 };
 
 // error ? FS
@@ -95,7 +95,7 @@ export class LemmatizedEntityRefParser extends EmptyParser implements Parser<XML
             lemmas: 'w',
             lem: 'lem',
             item: 'item',
-            term: 'term'
+            term: 'term',
         };
 
         return {

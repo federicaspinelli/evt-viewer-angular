@@ -15212,7 +15212,147 @@
                 <!-- ########## Lista dei lemmi ########## -->
                 <list type="listLem">
                     <head>Lista lemmi</head>
-                    <entry type="term" xml:id="amasiamentum" n="amasiamentum" sortKey="a">
+                    <entry type="Espandi per analizzare la risorsa lessicale" xml:id="amasiamentum1" norm="amasiamentum" sortKey="a">
+                        <!-- Lemma -->
+                        <form type="lemma">
+                            <orth>amasiamentum</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <gen expand="neutro" value="neuter">neut.</gen>
+                            </gramGrp>
+                        </form>
+                        <!-- Forme flesse -->
+                        <form type="inflected">
+                            <orth xml:id="amasiamento">amasiamento</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <case expand="ablativo" value="ablative">abl.</case>
+                            <number expand="singolare" value="singular">sing.</number>
+                            </gramGrp>
+                        </form>
+                        <form type="inflected">
+                            <orth xml:id="amasiamenta">amasiamenta</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <case expand="nominativo" value="nominative">nom.</case>
+                            <number expand="plurale" value="plural">pl.</number>
+                            </gramGrp>
+                        </form>
+                        <!-- Definizione: tratta dalla descrizione-->
+                        <sense>
+                            <def>diritto di riunire più terre a formare un manso</def>
+                        </sense>
+                        <!-- Etimologia -->
+                        <etym>Il termine deriva da <mentioned>masia</mentioned> (DU CANGE) di cui si danno più
+                            interpretazioni: <def>casa colonica con fattoria agricola</def>; <def>una certa quantità
+                            di terra</def>; <def>la raccolta di possedimenti e proprietà</def>; con il prefisso a-
+                            è all'origine del nostro <def>ammassare</def>, <def>ammassamento</def>. </etym>
+
+                        <!-- Descrizione -->
+                        <sense value="desc">Nel contesto il termine - usato quasi sempre in abbinamento con
+                            <mentioned>dismasiamentum</mentioned> - si riferisce al diritto feudale di riunire più
+                            terre a formare un manso (APROSIO 2003). In particolare
+                            l'<mentioned>amasiamentum</mentioned> era <cit>
+                            <quote>la potestà di stabilire il rapporto giuridico tra la terra e i coltivatori in
+                                quel modo di essere che costituice l'entità colturale del manso</quote>
+                            </cit> (TIRELLI 1991) </sense>
+                        <!-- Riferimenti bibliografici -->
+                        <listBibl>
+                            <bibl><ref target="#APROSIO_2003">APROSIO 2003</ref>, vol. 1, p. 75</bibl>
+                            <bibl>
+                            <ref target="#BATTISTI_ALESSIO_1975">BATTISTI ALESSIO 1975</ref>
+                            <mentioned>dismasare</mentioned>
+                            </bibl>
+                            <bibl><ref target="#TIRELLI_1991">TIRELLI 1991</ref>, p. 97, nota 124</bibl>
+                        </listBibl>
+
+                        <!-- Riferimenti a documenti dove si trova il termine -->
+                        <cit type="concordances">
+                            <cit>
+                            <quote xml:lang="lat">Mansus de Plaça Suprana: denarios VI segatura et ambaxiatam per
+                                totum episcopatum Lunensem et castellaniam, placitum, dismasiamentum et
+                                <mentioned>amasiamentum</mentioned>.</quote>
+                            <ref target="#doc=C03&amp;page=fol_016r"> Doc. 3. </ref>
+                            </cit>
+                            <cit>
+                            <quote xml:lang="lat">Placita vero et districta, offensiones et
+                                <mentioned>amasiamenta</mentioned> omnia retinemus in nos et nostros successores,
+                                sicut fecerunt predecessores nostri.</quote>
+                            <ref target="#doc=CI_118&amp;page=fol_215v"> Doc. 118-CI. </ref>
+                            </cit>
+                        </cit>
+                    </entry>
+                    <entry type="term" xml:id="amasiamentum2" n="amasiamentum" sortKey="a">
+                        <!-- Lemma -->
+                        <form type="lemma">
+                            <orth>amasiamentum</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <gen expand="neutro" value="neuter">neut.</gen>
+                            </gramGrp>
+                        </form>
+                        <!-- Forme flesse -->
+                        <form type="inflected">
+                            <orth xml:id="amasiamento">amasiamento</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <case expand="ablativo" value="ablative">abl.</case>
+                            <number expand="singolare" value="singular">sing.</number>
+                            </gramGrp>
+                        </form>
+                        <form type="inflected">
+                            <orth xml:id="amasiamenta">amasiamenta</orth>
+                            <gramGrp>
+                            <pos expand="sostantivo" value="noun">sost.</pos>
+                            <case expand="nominativo" value="nominative">nom.</case>
+                            <number expand="plurale" value="plural">pl.</number>
+                            </gramGrp>
+                        </form>
+                        <!-- Definizione: tratta dalla descrizione-->
+                        <sense>
+                            <def>diritto di riunire più terre a formare un manso</def>
+                        </sense>
+                        <!-- Etimologia -->
+                        <etym>Il termine deriva da <mentioned>masia</mentioned> (DU CANGE) di cui si danno più
+                            interpretazioni: <def>casa colonica con fattoria agricola</def>; <def>una certa quantità
+                            di terra</def>; <def>la raccolta di possedimenti e proprietà</def>; con il prefisso a-
+                            è all'origine del nostro <def>ammassare</def>, <def>ammassamento</def>. </etym>
+
+                        <!-- Descrizione -->
+                        <sense value="desc">Nel contesto il termine - usato quasi sempre in abbinamento con
+                            <mentioned>dismasiamentum</mentioned> - si riferisce al diritto feudale di riunire più
+                            terre a formare un manso (APROSIO 2003). In particolare
+                            l'<mentioned>amasiamentum</mentioned> era <cit>
+                            <quote>la potestà di stabilire il rapporto giuridico tra la terra e i coltivatori in
+                                quel modo di essere che costituice l'entità colturale del manso</quote>
+                            </cit> (TIRELLI 1991) </sense>
+                        <!-- Riferimenti bibliografici -->
+                        <listBibl>
+                            <bibl><ref target="#APROSIO_2003">APROSIO 2003</ref>, vol. 1, p. 75</bibl>
+                            <bibl>
+                            <ref target="#BATTISTI_ALESSIO_1975">BATTISTI ALESSIO 1975</ref>
+                            <mentioned>dismasare</mentioned>
+                            </bibl>
+                            <bibl><ref target="#TIRELLI_1991">TIRELLI 1991</ref>, p. 97, nota 124</bibl>
+                        </listBibl>
+
+                        <!-- Riferimenti a documenti dove si trova il termine -->
+                        <cit type="concordances">
+                            <cit>
+                            <quote xml:lang="lat">Mansus de Plaça Suprana: denarios VI segatura et ambaxiatam per
+                                totum episcopatum Lunensem et castellaniam, placitum, dismasiamentum et
+                                <mentioned>amasiamentum</mentioned>.</quote>
+                            <ref target="#doc=C03&amp;page=fol_016r"> Doc. 3. </ref>
+                            </cit>
+                            <cit>
+                            <quote xml:lang="lat">Placita vero et districta, offensiones et
+                                <mentioned>amasiamenta</mentioned> omnia retinemus in nos et nostros successores,
+                                sicut fecerunt predecessores nostri.</quote>
+                            <ref target="#doc=CI_118&amp;page=fol_215v"> Doc. 118-CI. </ref>
+                            </cit>
+                        </cit>
+                    </entry>
+                    <entry type="gloss" xml:id="amasiamentum3" n="amasiamentum" sortKey="a">
                         <!-- Lemma -->
                         <form type="lemma">
                             <orth>amasiamentum</orth>
