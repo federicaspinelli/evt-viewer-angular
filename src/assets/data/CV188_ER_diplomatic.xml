@@ -470,8 +470,8 @@
                     <form type="lemma">
                     <orth>astalin</orth>
                     </form>
-                    <gramGrp>
                     
+                    <gramGrp>
                     <!-- Per le informazioni grammaticali da decidere tra varie forme possibili: 
                         <pos value="noun"></pos>
                         <pos value="noun"/>
@@ -484,46 +484,46 @@
                     
                     <!-- ######## Le occorrenze del termine nel testo critico: per prima cosa la forma del lemma ######## -->
                     
-                    <form>
-                    <orth>astalin</orth>
-                    <gramGrp>
-                        <case value="nominative"/>
-                        <number value="singular">sing</number>
-                    </gramGrp>
-                    <cit type="main">
-                        <!-- Marcare nel testo critico anche term e gloss -->
-                        <quote>Si quis contra inimicús pugnando collegam suum dimiserit aut astalin fecerit, id est si eum diceperit
-                        et cum eum non laboraverit, animae suae incurrat periculum.</quote>
+                    <form type="lemma">
+                        <orth>astalin</orth>
+                        <gramGrp>
+                            <case value="nominative"/>
+                            <number value="singular">sing</number>
+                        </gramGrp>
+                        <cit type="main">
+                            <!-- Marcare nel testo critico anche term e gloss -->
+                            <quote>Si quis contra inimicús pugnando collegam suum dimiserit aut astalin fecerit, id est si eum diceperit
+                            et cum eum non laboraverit, animae suae incurrat periculum.</quote>
 
-                        <ref target="#CV188_p_019v_7">ER 7</ref>
-                    </cit>
-                    <!-- inserire anche tutti i riferimenti ai vari testimoni??? -->
-                    <cit type="witness">
-                        <quote>id est si eum diceperit et cum eum non laboraverit</quote>
-                        <ref target="#CV188_gloss_astalin">MS 2</ref>
-                    </cit>
+                            <ref target="#CV188_p_019v_7">ER 7</ref>
+                        </cit>
+                        <!-- inserire anche tutti i riferimenti ai vari testimoni??? -->
+                        <cit type="witness">
+                            <quote>id est si eum diceperit et cum eum non laboraverit</quote>
+                            <ref target="#CV188_gloss_astalin">MS 2</ref>
+                        </cit>
                     </form>
                     
                     <!-- ######## Le occorrenze del termine nel testo critico: le forme flesse ######## -->
                     
                     <form type="inflected">
-                    <orth>astalin</orth>
-                    <gramGrp>
-                        <case value="nominative"/>
-                        <number value="singular">sing</number>
-                    </gramGrp>
-                    <cit type="main">
-                        <!-- Marcare nel testo anche term e gloss? -->
-                        <quote>Si quis contra inimicús pugnando collegam suum dimiserit aut astalin fecerit, id est si eum diceperit
-                        et cum eum non laboraverit, animae suae incurrat periculum.</quote>
-                        
-                        <ref target="#CV188_p_019v_7">ER 7</ref>
-                    </cit>
-                    <!-- inserire anche tutti i riferimenti ai vari testimoni??? -->
-                    <cit type="witness">
-                        <quote>id est si eum diceperit et cum eum non laboraverit</quote>
-                        <ref target="#CV188_gloss_astalin">MS 2</ref>
-                    </cit>
+                        <orth>astalin</orth>
+                        <gramGrp>
+                            <case value="nominative"/>
+                            <number value="singular">sing</number>
+                        </gramGrp>
+                        <cit type="main">
+                            <!-- Marcare nel testo anche term e gloss? -->
+                            <quote>Si quis contra inimicús pugnando collegam suum dimiserit aut astalin fecerit, id est si eum diceperit
+                            et cum eum non laboraverit, animae suae incurrat periculum.</quote>
+                            
+                            <ref target="#CV188_p_019v_7">ER 7</ref>
+                        </cit>
+                        <!-- inserire anche tutti i riferimenti ai vari testimoni??? -->
+                        <cit type="witness">
+                            <quote>id est si eum diceperit et cum eum non laboraverit</quote>
+                            <ref target="#CV188_gloss_astalin">MS 2</ref>
+                        </cit>
                     </form>
 
                     <!-- ######## Le forme grafiche alternative ######## -->
@@ -532,25 +532,25 @@
                     <!-- NB così come segue o meglio <orth><ref n="MS 2" target="#CV188_p_019v_7">anstallin</ref></orth>??? -->
 
                     <form type="variants">
-                    <orth>astalin <ref>MSS 1, 5, 8, 9, 10, 11; Gloss. Matr.</ref></orth>
-                    <!-- NB al momento il target punta alla riga in attesa di xml:id per il <term> -->
-                    <orth>anstallin <ref target="#CV188_p_019v_7">MS 2</ref></orth>
-                    <orth>anstallim <ref>MS 3</ref></orth>
-                    <orth>anstalin <ref>MS 3</ref></orth>
-                    <orth>astalium <ref>MS 12</ref></orth>
+                        <orth>astalin <ref>MSS 1, 5, 8, 9, 10, 11; Gloss. Matr.</ref></orth>
+                        <!-- NB al momento il target punta alla riga in attesa di xml:id per il <term> -->
+                        <orth>anstallin <ref target="#CV188_p_019v_7">MS 2</ref></orth>
+                        <orth>anstallim <ref>MS 3</ref></orth>
+                        <orth>anstalin <ref>MS 3</ref></orth>
+                        <orth>astalium <ref>MS 12</ref></orth>
                     </form>
 
                     <!-- ######## Il significato o i significati del termine ######## -->
 
                     <sense n="1">
-                    <def>Tradimento, fuga o abbandono dei compagni in battaglia.</def>
+                        <def>Tradimento, fuga o abbandono dei compagni in battaglia.</def>
                     </sense>
 
                     <!-- ######## Le occorrenze e le relative glosse in altri testi (???) ######## -->
 
                     <cit>
-                    <quote>Id <ex>est</ex> decipere</quote>
-                    <ref>Gloss. Matr.</ref>
+                        <quote>Id <ex>est</ex> decipere</quote>
+                        <ref>Gloss. Matr.</ref>
                     </cit>
 
                     <!-- ######## Una nota di commento/spiegazione relativa al termine ######## -->

@@ -16,7 +16,7 @@ export class LemmatizedEntitiesParserService {
 
   public parseLemLists(document: XMLElement) {
     const lemListsToParse = getLemListsToParseTagNames();
-    const lemListParser = ParserRegister.get('evt-lemmatized-lementities-list-parser');
+    const lemListParser = ParserRegister.get('evt-lemmatized-entities-list-parser');
     // We consider only first level lists; inset lists will be considered
     
     /*const lemlists = Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString()))

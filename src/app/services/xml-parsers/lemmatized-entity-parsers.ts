@@ -8,9 +8,9 @@ import { createParser, parseChildren, Parser } from './parser-models';
 
 // add by FS - add here new tag for CPD
 export const lemmatizedEntitiesListsTagNamesMap: { [key: string]: string } = {
-    lemmas: 'list, div[type="glossary"]',
-    entries: 'entry, term, gloss, w', 
-    occurrences: 'form, form[ref], lem[ref], term, gloss',
+    lemmas: 'list, div[type="glossary"], term[ref], gloss',
+    entries: 'entry, term[ref], gloss, w', 
+    occurrences: 'form, form[ref], lem[ref], term[ref], gloss',
 };
 
 /* error ? FS
@@ -18,7 +18,7 @@ export function getLemListType(tagName): LemmatizedEntityType {
     return tagName.toLowerCase();
 }*/
 export function getLemListType(tagName): LemmatizedEntityType {
-    return tagName.replace('lemlist', '').toLowerCase();
+    return tagName.replace('list', '').toLowerCase();
 }
 export function getLemListsToParseTagNames() {
     const neLemListsConfig = AppConfig.evtSettings.edition.lemmatizedEntitiesLists || {};
@@ -95,7 +95,7 @@ export class LemmatizedEntityRefParser extends EmptyParser implements Parser<XML
         const neLemTypeMap: { [key: string]: LemmatizedEntityType } = {
             // add by FS - add here new tag for CPD
             w: 'w',
-            term: 'entry',
+            term: 'term',
             gloss: 'entry',
             //lemmas: 'w',
             //lem: 'lem',
@@ -109,8 +109,8 @@ export class LemmatizedEntityRefParser extends EmptyParser implements Parser<XML
         return {
             type: LemmatizedEntityRef,
             entityLemId: getLemEntityID(ref),
-            entityLemType: neLemTypeMap[xml.tagName.toLowerCase()],
-            // entityLemType: neLemTypeMap[xml.tagName],
+            //entityLemType: neLemTypeMap[xml.tagName.toLowerCase()],
+            entityLemType: neLemTypeMap[xml.tagName],
             path: xpath(xml),
             content: parseChildren(xml, this.genericParse),
             attributes: this.attributeParser.parse(xml),
@@ -165,10 +165,12 @@ export class EntryParser extends EntityParser {
     private getLabel(xml: XMLElement) { // TODO: refactor me, also try to use a function parameter for the label for each entity
         //const itemElement = xml.querySelector<XMLElement>('item');
         const lemElement = xml.querySelector<XMLElement>('lem');
+        const ortElement = xml.querySelector<XMLElement>('orth');
         const gramElement = xml.querySelector<XMLElement>('gramGrp');
         const citElement = xml.querySelector<XMLElement>('cit');
         const senseElement = xml.querySelector<XMLElement>('sense');
-        /*const noteElement = xml.querySelector<XMLElement>('note');*/
+        const quoteElement = xml.querySelector<XMLElement>('quote');
+        const refElement = xml.querySelector<XMLElement>('ref');
         const etymElement = xml.querySelector<XMLElement>('etym');
         const formElement = xml.querySelector<XMLElement>('form');
         let label: LemmatizedEntityLabel = 'No info';
@@ -177,11 +179,17 @@ export class EntryParser extends EntityParser {
         } else */
         if (formElement) {
             label = replaceNewLines(formElement.textContent) || 'No info';
+        } else if (refElement) {
+            label = refElement ? `${replaceNewLines(refElement.textContent)} ` : '';
         } else if (gramElement) {
             label = gramElement ? `${replaceNewLines(gramElement.textContent)} ` : '';
+        } else if (ortElement) {
+            label = ortElement ? `${replaceNewLines(ortElement.textContent)} ` : '';
         } else if (citElement) {
             label = citElement ? `${replaceNewLines(citElement.textContent)} ` : '';
-        } else if (senseElement) {
+        } else if (quoteElement) {
+            label = quoteElement ? `${replaceNewLines(quoteElement.textContent)} ` : '';
+        }else if (senseElement) {
             label = senseElement ? `${replaceNewLines(senseElement.textContent)} ` : '';
         } /*else if (noteElement) {
             label = noteElement ? `${replaceNewLines(noteElement.textContent)} ` : '';

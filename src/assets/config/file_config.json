@@ -10,7 +10,7 @@
 			"enable": false
 		}
 	},
-	"imagesFolderUrl": "",
+	"imagesFolderUrl": "/assets/images",
 	"configurationUrls": {
 		"edition": "assets/config/edition_config.json",
 		"ui": "assets/config/ui_config.json",
