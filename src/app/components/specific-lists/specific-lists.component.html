@@ -1,6 +1,6 @@
 <div class="row h-100 m-0">
     <div class="bg-light col-3 p-0 border-right">
-        <ng-template ngFor let-lemlist [ngForOf]="lists$ | async">
+        <ng-template ngFor let-lemlist [ngForOf]="lemlists$ | async">
             <ng-template [ngTemplateOutlet]="listTemplate"
                 [ngTemplateOutletContext]="{ lemlist: lemlist, last: false }">
             </ng-template>

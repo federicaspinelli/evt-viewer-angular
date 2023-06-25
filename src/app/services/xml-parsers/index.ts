@@ -31,13 +31,13 @@ export class ParserRegister {
         if (crit.includes(tagName)) {
             return 'evt-apparatus-entry-parser';
         }
-
-        // add by FS - add here new tag for CPD
-        const neslem = ['w', 'lem', 'term', 'gloss'];
+        // add by FS - add here new tag for CPD - qui i tag nel testo
+        const neslem = ['w', 'lem', 'term', 'gloss', 'form'];
         if (neslem.includes(tagName)) {
             return 'evt-lemmatized-entity-parser';
         }
-        const nelslem = ['list', 'entry', 'div[type="glossary"]'];
+        // qui i tag per le liste
+        const nelslem = ['list', 'div[type="glossary"]'];
         if (nelslem.includes(tagName)) {
             return 'evt-lemmatized-entities-list-parser';
         }

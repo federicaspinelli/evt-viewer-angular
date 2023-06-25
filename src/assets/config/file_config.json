@@ -1,8 +1,8 @@
 {
-	"editionUrls": ["assets/data/main.xml"],
+	"editionUrls": ["/assets/data/CV188_ER_diplomatic.xml"],
 	"editionImagesSource": {
 		"manifest": {
-			"value": "https://www.e-codices.unifr.ch/metadata/iiif/csg-0730/manifest.json",
+			"value": "",
 			"enable": false
 		},
 		"graphics": {
@@ -10,7 +10,7 @@
 			"enable": false
 		}
 	},
-	"imagesFolderUrl": "assets/data/images/single",
+	"imagesFolderUrl": "",
 	"configurationUrls": {
 		"edition": "assets/config/edition_config.json",
 		"ui": "assets/config/ui_config.json",

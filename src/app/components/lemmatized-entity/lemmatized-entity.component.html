@@ -8,20 +8,6 @@
         </evt-icon>
         <evt-icon *ngIf="inList && !contentOpened"
             [iconInfo]="{icon: 'caret-right', additionalClasses: 'icon toggler mr-2'}"></evt-icon>
-        <evt-icon *ngIf="data.lemmatizedEntityType === 'lem'"
-            [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
-        </evt-icon>
-        <evt-icon *ngIf="data.lemmatizedEntityType === 'w'"
-            [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
-        </evt-icon>
-        <!-- add by FS to manage lemma term -->
-        <evt-icon *ngIf="data.lemmatizedEntityType === 'term'"
-            [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
-        </evt-icon>
-        <!-- add by FS to manage lemma gloss -->
-        <evt-icon *ngIf="data.lemmatizedEntityType === 'gloss'"
-            [iconInfo]="{icon: 'map-marker', additionalClasses: 'icon mr-1'}">
-        </evt-icon>
         {{ data.label }}
         <evt-pinner [item]="data" renderer="LemmatizedEntity" pinType="LemmatizedEntities"></evt-pinner>
     </div>
@@ -37,10 +23,10 @@
                 </ng-template>
             </li>
             <li [ngbNavItem]="'occurrences_'+data.id">
-                <a ngbNavLink class="ui-font">{{'Occorrenze' | translate}}</a>
+                <a ngbNavLink class="ui-font">{{'Occurrences' | translate}}</a>
                 <ng-template ngbNavContent>
                     <div class="ne-detail-content ui-font" *ngIf="occurrences$ | async as occurrences">
-                        <span *ngIf="occurrences.length === 0">{{'noLemOccurrences' | translate}}</span>
+                        <span *ngIf="occurrences.length === 0">{{'noOccurrences' | translate}}</span>
                         <evt-lemmatized-entity-occurrence *ngFor="let occurrence of occurrences" [occurrence]="occurrence" [entityLemId]="data.id"></evt-lemmatized-entity-occurrence>
                     </div>
                 </ng-template>

@@ -95,6 +95,7 @@ export interface EditionConfig {
     // add by FS 
     lemmatizedEntitiesLists: Partial<{
         lemmas: LemmatizedEntitiesListsConfig;
+        entries: LemmatizedEntitiesListsConfig;
         iperlemmas: LemmatizedEntitiesListsConfig;
         relations: LemmatizedEntitiesListsConfig;
     }>;

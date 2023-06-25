@@ -16,8 +16,10 @@ interface SpecificList extends LemmatizedEntitiesList {
   styleUrls: ['./specific-lists.component.scss'],
 })
 export class SpecificListsComponent {
-  lists$: Observable<SpecificList[]> = this.evtModelService.lemmatizedEntities$.pipe(
-    map(ne => (ne.lemmas.lemlists)),
+  lemlists$: Observable<SpecificList[]> = this.evtModelService.lemmatizedEntities$.pipe(
+    // add by fs 25.06.23 14:08
+    map((ne) => (ne.lemmas.lemlists.concat(ne.item.lemlists, ne.entries.lemlists))),
+    //map(ne => (ne.lemmas.lemlists)),
     map(lemlists => (lemlists.map(lemlist => ({
       ...lemlist,
       icon: this.listsIcons[lemlist.lemmatizedEntityType] || 'lemlist',

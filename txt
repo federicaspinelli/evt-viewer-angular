@@ -1,0 +1,3 @@
+#ngb-nav-3-panel > div > evt-content-viewer:nth-child(2) > evt-generic-element > evt-content-viewer:nth-child(1)
+document.querySelector("#ngb-nav-3-panel > div > evt-content-viewer:nth-child(2) > evt-generic-element > evt-content-viewer:nth-child(1)")
+

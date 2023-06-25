@@ -1,5 +1,5 @@
 // import { Attribute } from '@angular/core';
-// import { LemmatizedEntityLabel } from './../../models/evt-models';
+//import { LemmatizedEntityLabel } from './../../models/evt-models';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbNav } from '@ng-bootstrap/ng-bootstrap';
 import { map, shareReplay } from 'rxjs/operators';

@@ -95,7 +95,15 @@ export interface LemmatizedEntities {
         lemlists: LemmatizedEntitiesList[];
         lementities: LemmatizedEntity[];
     };
+    item: {
+        lemlists: LemmatizedEntitiesList[];
+        lementities: LemmatizedEntity[];
+    };
     lemmas: {
+        lemlists: LemmatizedEntitiesList[];
+        lementities: LemmatizedEntity[];
+    };
+    entries: {
         lemlists: LemmatizedEntitiesList[];
         lementities: LemmatizedEntity[];
     };
@@ -129,7 +137,8 @@ export class NamedEntity extends GenericElement {
     originalEncoding: OriginalEncodingNodeType;
 }
 // add by FS - add here new tag for ER - add term and gloss
-export type LemmatizedEntityType = 'lem' | 'w' | 'list' | 'item' | 'term' | 'gloss' | 'form' | 'entry' ;
+// export type LemmatizedEntityType = 'form' | 'lem' | 'w' | 'list' | 'item' | 'term' | 'gloss' | 'entry' | 'generic' ;
+export type LemmatizedEntityType = 'w' | 'term' | 'gloss' | 'generic' | 'entry' ;
 export class LemmatizedEntitiesList extends GenericElement {
     id: string;
     label: string;
@@ -1116,9 +1125,23 @@ export class Term extends GenericElement {
     rend?: string;
 }
 
+export class Gloss extends GenericElement {
+    id?: string;
+    ref?: string;
+    rend?: string;
+}
+
+export class Form extends GenericElement {
+    id?: string;
+    ref?: string;
+    rend?: string;
+}
+
 export class Keywords extends GenericElement {
     scheme?: string;
     terms: Term[];
+    glosss:Gloss[];
+    forms: Form[];
 }
 
 export class TextClass extends GenericElement {

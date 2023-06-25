@@ -48,9 +48,13 @@
 			"defaultLabel": "Lem",
 			"enabled": true
 		},
+		"entries": {
+			"defaultLabel": "Entry",
+			"enabled": true
+		},
 		"iperlemmas": {
 			"defaultLabel": "Iperlem",
-			"enabled": true
+			"enabled": false
 		}
 	},
 	"entitiesSelectItems": [
@@ -107,24 +111,18 @@
 			"enable": true
 		}
 	],
-
 	"lemsSelectItems": [
 		{
 			"label": "Categorie grammaticali",
 			"items": [
-				
+				{
+					"value": "entry",
+					"label": "entries",
+					"color": "#FFB74D",
+					"enable": true
+				},
 				{
 					"value": "term",
-					"label": "Prova",
-					"color": "#F6F3EC"
-				},
-				{
-					"value": "gloss",
-					"label": "Prova",
-					"color": "#F6F3EC"
-				},
-				{
-					"value": "w[pos='s.m.']",
 					"label": "Sostantivo maschile",
 					"color": "#F6F3EC"
 				},

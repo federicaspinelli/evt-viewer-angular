@@ -197,25 +197,31 @@ export class EVTModelService {
   // add by FS - add here new tag for LEMMI in the text - parser for element marked in the edition
   
   public readonly item$ = this.parsedLemLists$.pipe(
-    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry', 'gloss', 'form']))),
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'entry', 'term', 'gloss']))),
   );
 
   public readonly lemmas$ = this.parsedLemLists$.pipe(
-    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'w', 'term', 'entry', 'gloss', 'form']))),
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'entry', 'term', 'gloss']))),
+  );
+
+  public readonly entries$ = this.parsedLemLists$.pipe(
+    map(({ lemlists, lementities }) => (this.lemmatizedEntitiesParser.getResultsByType(lemlists, lementities, ['item', 'lem', 'entry', 'term', 'gloss']))),
   );
 
   public readonly lemmatizedEntities$: Observable<LemmatizedEntities> = combineLatest([
     this.item$,
     this.lemmas$,
+    this.entries$,
     this.relations$,
   ]).pipe(
-    map(([item, lemmas, relations]) => ({
+    map(([item, lemmas, entries, relations]) => ({
       all: {
-        lemlists: [...item.lemlists, ...lemmas.lemlists],
-        lementities: [...item.lementities],
+        lemlists: [...item.lemlists, ...lemmas.lemlists, ...entries.lemlists],
+        lementities: [...item.lementities, ...lemmas.lementities, ...entries.lementities],
       },
       item,
       lemmas,
+      entries,
       relations,
     })),
     shareReplay(1),

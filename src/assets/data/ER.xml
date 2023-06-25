@@ -109,79 +109,10 @@
 
         </msDesc>
 
-                        <!-- ########## Lista dei lemmi ########## -->
+        <!-- ########## Lista dei lemmi ########## -->
         <list type="listLem">
-                <!-- ESEMPIO -->
-                    <head>Lista lemmi</head>
-                    <!-- ########################### -->
-                    <!-- ########  empty  ######## -->
-                    <!-- ########################### -->
-                    
-                    <entry xml:id="eeeee">
-                        <form type="lemma">
-                        <orth></orth>
-                        </form>
-
-                        <gramGrp>
-                        <pos value="noun">n</pos>
-                        <gen value="feminine">f</gen>
-                        <!-- <case value="nominative">nom</case> -->
-                        <number value="singular">sing</number>
-                        <gram type="theme">-i</gram>
-                        </gramGrp>
-                        
-                        <cit type="main">
-                        <quote></quote>
-                        <ref target="#">ER </ref>
-                        </cit>
-                        
-                        <form type="variants">
-                        <orth> <ref target="#">MS </ref></orth>
-                        <orth> <ref>MSS 1, 5, 8, 9, 10, 11; Gloss. Matr.</ref></orth>
-                        <orth> <ref>MS 12</ref></orth>
-                        </form>
-                        
-                        <sense n="1">
-                        <def></def>
-                        </sense>
-                        
-                        <sense n="2">
-                        <def></def>
-                        </sense>
-
-                        <cit>
-                        <quote>Id <ex>est</ex> decipere</quote>
-                        <ref>Gloss. Matr.</ref>
-                        </cit>
-                        
-                        <note type="comment">Probabilmente una parola antica, tale da necessitare una spiegazione
-                        nella glossa corrispondente.</note>
-                        
-                        <etym>
-                        </etym>
-                        
-                        <re></re>
-                        <ref></ref>
-                        
-                        <note type="biblio">
-                        <ref target="#"></ref>
-                        <ref target="#"></ref>
-                        <ref target="#"></ref>
-                        </note>
-                    </entry>
-        
-                    <item type="lem" xml:id="2448">
-                        <lem type="calendario" norm="dicembre" pos="s.m.">dicembre</lem>
-                        <a lemmaRef="http://tlio.ovi.cnr.it/voci/014076.htm"></a>
-                    </item>
-                    <item type="lem" xml:id="0">
-                        <lem type="" norm="[...] de' grimaldi" pos="antr.">[...] de' grimaldi</lem>
-                    </item>
-                    <item type="lem" xml:id="1">
-                        <lem type="arti e mestieri" norm="abachiere" pos="s.m.">abachiere</lem>
-                        <a lemmaRef="http://tlio.ovi.cnr.it/voci/000002.htm"></a>
-                    </item>
-                </list>    
+            
+        </list>    
       </sourceDesc>
     </fileDesc>
 

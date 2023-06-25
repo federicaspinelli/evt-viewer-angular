@@ -18,7 +18,12 @@ export class LemmatizedEntitiesParserService {
     const lemListsToParse = getLemListsToParseTagNames();
     const lemListParser = ParserRegister.get('evt-lemmatized-lementities-list-parser');
     // We consider only first level lists; inset lists will be considered
-    const lemlists = Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString()))
+    
+    /*const lemlists = Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString()))
+      .filter((lemlist) => !isNestedInElem(lemlist, lemlist.tagName))
+      .map((l) => lemListParser.parse(l) as LemmatizedEntitiesList);
+    */
+    const lemlists = (lemListsToParse.toString() ? Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString())) : [])
       .filter((lemlist) => !isNestedInElem(lemlist, lemlist.tagName))
       .map((l) => lemListParser.parse(l) as LemmatizedEntitiesList);
 
@@ -31,7 +36,7 @@ export class LemmatizedEntitiesParserService {
 
   public getResultsByType(lemlists: LemmatizedEntitiesList[], lementities: LemmatizedEntity[], type: string[]) {
     return {
-      lemlists: lemlists.filter(list => type.indexOf(list.lemmatizedEntityType) >= 0),
+      lemlists: lemlists.filter(lemlist => type.indexOf(lemlist.lemmatizedEntityType) >= 0),
       lementities: lementities.filter(entity => type.indexOf(entity.lemmatizedEntityType) >= 0),
     };
   }

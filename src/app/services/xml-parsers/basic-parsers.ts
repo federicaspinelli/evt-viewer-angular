@@ -2,7 +2,7 @@ import { AttributesMap } from 'ng-dynamic-component';
 import { ParserRegister, xmlParser } from '.';
 import {
     Addition, Attributes, Damage, Deletion, Gap, GenericElement, Lb, Note, NoteLayout,
-    Paragraph, PlacementType, Ptr, Supplied, Term, Text, Verse, VersesGroup, Word, XMLElement,
+    Paragraph, PlacementType, Ptr, Supplied, Term, Gloss, Form, Text, Verse, VersesGroup, Word, XMLElement,
 } from '../../models/evt-models';
 import { isNestedInElem, xpath } from '../../utils/dom-utils';
 import { replaceMultispaces } from '../../utils/xml-utils';
@@ -124,7 +124,7 @@ export class NoteParser extends EmptyParser implements Parser<XMLElement> {
     attributeParser = createParser(AttributeParser, this.genericParse);
     parse(xml: XMLElement): Note {
         const noteLayout: NoteLayout = this.isFooterNote(xml) || this.isNamedEntityNote(xml)
-            || ['person', 'place', 'app', 'msDesc'].some((v) => isNestedInElem(xml, v))
+            || ['person', 'place', 'app', 'msDesc', 'entry'].some((v) => isNestedInElem(xml, v))
             ? 'plain-text'
             : 'popover';
 
@@ -330,12 +330,25 @@ export class TermParser extends GenericElemParser implements Parser<XMLElement> 
     }
 }
 
-@xmlParser('gloss', TermParser)
+@xmlParser('gloss', GlossParser)
 export class GlossParser extends GenericElemParser implements Parser<XMLElement> {
-    parse(xml: XMLElement): Term {
+    parse(xml: XMLElement): Gloss {
         return {
             ...super.parse(xml),
-            type: Term,
+            type: Gloss,
+            id: xml.getAttribute('xml:id'),
+            ref: xml.getAttribute('ref'),
+            rend: xml.getAttribute('rend'),
+        };
+    }
+}
+// form parser add by FS
+@xmlParser('form', FormParser)
+export class FormParser extends GenericElemParser implements Parser<XMLElement> {
+    parse(xml: XMLElement): Form {
+        return {
+            ...super.parse(xml),
+            type: Form,
             id: xml.getAttribute('xml:id'),
             ref: xml.getAttribute('ref'),
             rend: xml.getAttribute('rend'),

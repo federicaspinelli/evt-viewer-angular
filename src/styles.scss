@@ -254,3 +254,29 @@ span.iperlemmatizedEntityRef.w.highlight {
         }
     }
 }
+/* Stile per l'elemento form 
+evt-content-viewer.genericElement.form {
+    display: block;
+    page-break-before: always;
+}
+evt-content-viewer.genericElement.pos::before {
+    content: "Pos: ";
+    font-weight: bold;
+    //position: absolute;
+    //top: -1.5em;
+    //left: 0;
+}
+evt-content-viewer.genericElement.gen::before {
+    content: "Gen: ";
+    font-weight: bold;
+    //position: absolute;
+    //top: -1.5em;
+    //left: 0;
+}
+evt-content-viewer.genericElement.iType::before {
+    content: "Theme: ";
+    font-weight: bold;
+    //position: absolute;
+    //top: -1.5em;
+    //left: 0;
+}*/

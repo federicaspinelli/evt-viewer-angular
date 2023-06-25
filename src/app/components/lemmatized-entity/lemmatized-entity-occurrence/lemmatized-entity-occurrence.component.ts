@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { take } from 'rxjs/operators';
-
+//import { take } from 'rxjs/operators';
 import { LemmatizedEntityOccurrence, LemmatizedEntityOccurrenceRef } from '../../../models/evt-models';
-import { EVTModelService } from '../../../services/evt-model.service';
+//import { EVTModelService } from '../../../services/evt-model.service';
 import { EVTStatusService } from '../../../services/evt-status.service';
 
 @Component({
@@ -15,17 +14,24 @@ export class LemmatizedEntityOccurrenceComponent {
   @Input() entityLemId: string;
 
   constructor(
-    private evtModelService: EVTModelService,
+    //private evtModelService: EVTModelService,
     private evtStatusService: EVTStatusService,
   ) {
   }
 
   goToOccurrenceRef(ref: LemmatizedEntityOccurrenceRef) {
-    this.evtModelService.pages$.pipe(take(1)).subscribe(pages => {
+    this.evtStatusService.updateDocument$.next(ref.docId);
+    this.evtStatusService.currentNamedEntityId$.next(this.entityLemId);
+    this.evtStatusService.updatePageId$.next(this.occurrence.pageId);
+    /*this.evtModelService.pages$.pipe(take(1)).subscribe(pages => {
       const page = pages.find(p => p.id === this.occurrence.pageId);
       this.evtStatusService.updateDocument$.next(ref.docId);
       this.evtStatusService.updatePage$.next(page);
       this.evtStatusService.currentLemmatizedEntityId$.next(this.entityLemId);
-    });
+    });*/
+  }
+  
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation();
   }
 }
