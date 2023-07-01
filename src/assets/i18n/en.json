@@ -178,5 +178,12 @@
     "selectLemsAll": "Select all lems",
     "clearLemsAll": "Clear all lems",
     "selectIperlemsAll": "Select all iperlems",
-    "clearIperlemsAll": "Clear all iperlems"
+    "clearIperlemsAll": "Clear all iperlems",
+    "form": "Form",
+    "lemma": "Lemma",
+    "etym": "Ethym",
+    "variants": "Variants",
+    "inflected": "Inflected",
+    "gramGrp": "Grammatical Cathegory",
+    "biblio": "Bibliography"
 }

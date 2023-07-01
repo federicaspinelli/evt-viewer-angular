@@ -11,7 +11,7 @@ import {
   Punctuation, PunctuationMarks, PunctuationPlacement,
   Purpose, Quotation, QuotationMarks, RefsDecl, RefState, Rendition, RenditionScope, Resp, RespStmt, RevisionDesc,
   SamplingDecl, Scheme, Segmentation, SeriesStmt, Setting, SettingDesc, SourceDesc, Status, StdVals,
-  StyleDefDecl, TagsDecl, TagUsage, Term, Gloss, Form, TextClass, TextDesc, TitleStmt, Transpose, XMLElement,
+  StyleDefDecl, TagsDecl, TagUsage, Term, Gloss, Form, Orth, TextClass, TextDesc, TitleStmt, Transpose, XMLElement,
 } from '../../models/evt-models';
 import { GenericElemParser, GenericParser, parseElement, queryAndParseElement, queryAndParseElements } from './basic-parsers';
 import { NamedEntityRefParser } from './named-entity-parsers';
@@ -598,6 +598,7 @@ export class KeywordsParser extends GenericElemParser implements Parser<XMLEleme
       terms: queryAndParseElements<Term>(xml, 'term'),
       glosss: queryAndParseElements<Gloss>(xml, 'gloss'),
       forms: queryAndParseElements<Form>(xml, 'form'),
+      orths: queryAndParseElements<Orth>(xml, 'orth'),
     };
   }
 }

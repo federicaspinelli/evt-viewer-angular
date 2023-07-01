@@ -19,14 +19,14 @@ export class LemmatizedEntitiesParserService {
     const lemListParser = ParserRegister.get('evt-lemmatized-entities-list-parser');
     // We consider only first level lists; inset lists will be considered
     
-    /*const lemlists = Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString()))
+    const lemlists = Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString()))
       .filter((lemlist) => !isNestedInElem(lemlist, lemlist.tagName))
       .map((l) => lemListParser.parse(l) as LemmatizedEntitiesList);
-    */
+/*    
     const lemlists = (lemListsToParse.toString() ? Array.from(document.querySelectorAll<XMLElement>(lemListsToParse.toString())) : [])
       .filter((lemlist) => !isNestedInElem(lemlist, lemlist.tagName))
       .map((l) => lemListParser.parse(l) as LemmatizedEntitiesList);
-
+*/
     return {
       lemlists,
       lementities: lemlists.map(({ content }) => content).reduce((a, b) => a.concat(b), []),

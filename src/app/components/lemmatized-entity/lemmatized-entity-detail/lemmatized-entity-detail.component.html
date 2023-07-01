@@ -1,17 +1,52 @@
 <div [title]="'&lt;' + data.label + '&gt;' | lowercase">
-    <span class="icon">
+    <!--span class="icon">
         <evt-icon [iconInfo]="iconData[data.label] || defaultIcon"></evt-icon>
-    </span>
-    <span class="label" *ngIf="data.label">{{ data.label }}: </span>
+    </span-->
     <span class="text">
+        <!--  contenitore Angular ng-container che itera su un array data.content con una direttiva *ngFor. 
+            Per ogni elemento dell'array, viene creato un elenco non ordinato (ul) con la classe attributes-list che contiene un elemento li -->
         <ng-container *ngFor="let element of data.content">
-            <evt-content-viewer [content]="element"></evt-content-viewer>
             <ul class="attributes-list">
-                <li *ngFor="let item of element.attributes | keyvalue">
-                    <span class="label">{{ item.key }}:</span> {{ item.value }}
-                </li>
-            </ul>
+            <!-- La classe label viene aggiunta a questo elemento li, se data.label è presente. -->
+            <li class="label" *ngIf="data.label==='form'"> {{'form' | translate}}
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
+                <span *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label" *ngIf="item.value==='lemma'">{{'lemma' | translate}}</span>
+                    <span class="label" *ngIf="item.value==='variants'">{{'variants' | translate}}</span>
+                    <span class="label" *ngIf="item.value==='inflected'">{{'inflected' | translate}}</span>
+                    <!-- Per ogni coppia chiave-valore, viene creato un elemento span con la classe label per la chiave e l'attributo per il valore -->
+                    <!--span class="info-label">{{ item.key  | translate}}</span> {{ item.value }}:-->
+                    <!--span *ngIf="item.key==='form'" class="d-block ms-2">
+                        <span class="info-label">{{'form' | translate}}</span>
+                    </span-->
+                </span>
+                <!--span *ngIf="element.attributes" class="d-block ms-2">
+                    <span class="info-label">{{'form' | translate}}</span> {{element.attributes}}
+                </span-->
+            </li>
+            <li class="label" *ngIf="data.label==='etym'"> {{'etym' | translate}}
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
+                <span *ngFor="let item of element.attributes | keyvalue">{{ item.value }}
+                    <!-- Per ogni coppia chiave-valore, viene creato un elemento span con la classe label per la chiave e l'attributo per il valore -->
+                    <!--span class="info-label">{{ item.key  | translate}}</span> {{ item.value }}:-->
+                    <!--span *ngIf="item.key==='form'" class="d-block ms-2">
+                        <span class="info-label">{{'form' | translate}}</span>
+                    </span-->
+                </span>
+                <!--span *ngIf="element.attributes" class="d-block ms-2">
+                    <span class="info-label">{{'form' | translate}}</span> {{element.attributes}}
+                </span-->
+            </li>
+            <span class="label" *ngIf="data.label==='gramGrp'"> {{'gramGrp' | translate}}
+               
+            </span> 
+            <li class="label" *ngIf="data.label==='note'">
+                <span *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label" *ngIf="item.value==='biblio'">{{'biblio' | translate}}</span>
+                </span>
+            </li>        
+            <evt-content-viewer [content]="element"></evt-content-viewer>           
+            </ul>    
         </ng-container>
-
     </span>
 </div>

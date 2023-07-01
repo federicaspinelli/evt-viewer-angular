@@ -2,7 +2,7 @@ import { AttributesMap } from 'ng-dynamic-component';
 import { ParserRegister, xmlParser } from '.';
 import {
     Addition, Attributes, Damage, Deletion, Gap, GenericElement, Lb, Note, NoteLayout,
-    Paragraph, PlacementType, Ptr, Supplied, Term, Gloss, Form, Text, Verse, VersesGroup, Word, XMLElement,
+    Paragraph, PlacementType, Ptr, Supplied, Term, Gloss, Form, Orth, Text, Verse, VersesGroup, Word, XMLElement,
 } from '../../models/evt-models';
 import { isNestedInElem, xpath } from '../../utils/dom-utils';
 import { replaceMultispaces } from '../../utils/xml-utils';
@@ -352,6 +352,20 @@ export class FormParser extends GenericElemParser implements Parser<XMLElement> 
             id: xml.getAttribute('xml:id'),
             ref: xml.getAttribute('ref'),
             rend: xml.getAttribute('rend'),
+        };
+    }
+}
+
+@xmlParser('orth', OrthParser)
+export class OrthParser extends GenericElemParser implements Parser<XMLElement> {
+    parse(xml: XMLElement): Orth {
+        return {
+            ...super.parse(xml),
+            type: Orth,
+            id: xml.getAttribute('xml:id'),
+            ref: xml.getAttribute('ref'),
+            rend: xml.getAttribute('rend'),
+            resp: xml.getAttribute('resp'),
         };
     }
 }

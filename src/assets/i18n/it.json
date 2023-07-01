@@ -177,5 +177,11 @@
     "selectLemsAll": "Seleziona tutto",
     "clearLemsAll": "Pulisci selezione",
     "selectIperlemsAll": "Seleziona tutto",
-    "clearIperlemsAll": "Pulisci selezione"
+    "clearIperlemsAll": "Pulisci selezione",
+    "form": "forma",
+    "etym": "Etimologia",
+    "variants": "variante",
+    "inflected": "Flessa",
+    "gramGrp": "Categoria grammaticale",
+    "biblio": "Bibliografia"
 }

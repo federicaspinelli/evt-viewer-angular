@@ -1137,11 +1137,19 @@ export class Form extends GenericElement {
     rend?: string;
 }
 
+export class Orth extends GenericElement {
+    id?: string;
+    ref?: string;
+    rend?: string;
+    resp?: string;
+}
+
 export class Keywords extends GenericElement {
     scheme?: string;
     terms: Term[];
     glosss:Gloss[];
     forms: Form[];
+    orths: Orth[];
 }
 
 export class TextClass extends GenericElement {

@@ -106,10 +106,6 @@ export class EVTModelService {
     shareReplay(1),
   );
 
-  public lemsOccurrences$: Observable<Map<LemmatizedEntityOccurrence[]>> = this.pages$.pipe(
-    map((pages) => this.lemmatizedEntitiesParser.parseLemmatizedEntitiesOccurrences(pages)),
-    shareReplay(1),
-  );
   // WITNESSES
   public readonly witnessesData$ = this.editionSource$.pipe(
     map((source) => this.witnessesParser.parseWitnessesData(source)),
@@ -188,12 +184,12 @@ export class EVTModelService {
     shareReplay(1),
 );
   // add by FS 
-  // LEMMA ENTITIES
-  public readonly parsedLemLists$ = this.editionSource$.pipe(
-    map((source) => this.lemmatizedEntitiesParser.parseLemLists(source)),
-    shareReplay(1),
-  );
-
+    // LEMMA ENTITIES
+    public readonly parsedLemLists$ = this.editionSource$.pipe(
+      map((source) => this.lemmatizedEntitiesParser.parseLemLists(source)),
+      shareReplay(1),
+    );
+    
   // add by FS - add here new tag for LEMMI in the text - parser for element marked in the edition
   
   public readonly item$ = this.parsedLemLists$.pipe(
@@ -227,10 +223,11 @@ export class EVTModelService {
     shareReplay(1),
   );
 
-  public entitiesLemOccurrences$: Observable<Map<LemmatizedEntityOccurrence[]>> = this.pages$.pipe(
+  public lemsOccurrences$: Observable<Map<LemmatizedEntityOccurrence[]>> = this.pages$.pipe(
     map((pages) => this.lemmatizedEntitiesParser.parseLemmatizedEntitiesOccurrences(pages)),
     shareReplay(1),
   );
+
 
   constructor(
     private editionDataService: EditionDataService,

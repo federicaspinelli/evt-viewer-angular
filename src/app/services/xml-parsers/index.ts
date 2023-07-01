@@ -32,7 +32,7 @@ export class ParserRegister {
             return 'evt-apparatus-entry-parser';
         }
         // add by FS - add here new tag for CPD - qui i tag nel testo
-        const neslem = ['w', 'lem', 'term', 'gloss', 'form'];
+        const neslem = ['w', 'lem', 'term', 'gloss', 'form', 'orth'];
         if (neslem.includes(tagName)) {
             return 'evt-lemmatized-entity-parser';
         }
