@@ -1,0 +1,126 @@
+<div [title]="'&lt;' + data.label + '&gt;' | lowercase" class="card-footer app-detail-tabs">
+    <!--span class="icon">
+        <evt-icon [iconInfo]="iconData[data.label] || defaultIcon"></evt-icon>
+    </span-->
+    <span class="text">
+        <!--  contenitore Angular ng-container che itera su un array data.content con una direttiva *ngFor. 
+            Per ogni elemento dell'array, viene creato un elenco non ordinato (ul) con la classe attributes-list che contiene un elemento li -->
+        <ng-container *ngFor="let element of data.content">
+            <ul class="attributes-list">
+            <!-- La classe label viene aggiunta a questo elemento li, se data.label è presente. -->
+            <li class="label" *ngIf="data.label==='form'">
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
+                <span *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label" *ngIf="item.value==='lemma'">{{'lemma' | translate}}</span>
+                    <span class="label" *ngIf="item.value==='variants'">{{'variants' | translate}}</span>
+                    <span class="label" *ngIf="item.value==='inflected'">{{'inflected' | translate}}</span>
+                    <!--span class="label" *ngIf="item.value!=='lemma' && item.value!=='variants' && item.value!=='inflected'">{{ item.key }}</span> {{ item.value }}-->
+                </span>
+                <!--span *ngIf="element.attributes" class="d-block ms-2">
+                    <span class="info-label">{{'form' | translate}}</span> {{element.attributes}}
+                </span-->
+            </li>
+            <span class="label" *ngIf="data.label==='gramgrp'"> {{'gramGrp' | translate}} </span> 
+            <li class="label" *ngIf="data.label==='etym'"> {{'etym' | translate}}
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
+                <span *ngFor="let item of element.attributes | keyvalue">{{ item.value }}
+                </span>
+            </li>
+            <li class="label" *ngIf="data.label==='sense'"> {{'sense' | translate}}
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor 
+                <span *ngFor="let item of element.attributes | keyvalue">{{ item.value }}
+                </span> -->
+            </li>
+            <li class="label" *ngIf="data.label==='cit'"> {{'cit' | translate}}
+                <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor 
+                <span *ngFor="let item of element.attributes | keyvalue">{{ item.value }}
+                </span> -->
+            </li>
+            <li class="label" *ngIf="data.label==='note'">
+                <span *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label" *ngIf="item.value==='biblio'">{{'biblio' | translate}}</span>
+                    <span class="label" *ngIf="item.value==='comment'">{{'comment' | translate}}</span>
+                    <span class="label" *ngIf="item.value!=='comment' && item.value!=='biblio'">{{ item.key }}</span> {{ item.value }}
+                </span>
+            </li>
+            <span class="label" *ngIf="data.label!=='form' && data.label!=='gramgrp' && data.label!=='etym' && data.label!=='sense' && data.label!=='cit' && data.label!=='note'">
+                <li *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label">{{ item.key }}</span> {{ item.value }}
+                </li>
+            </span>      
+            <evt-content-viewer [content]="element"></evt-content-viewer>           
+            </ul>    
+        </ng-container>
+    </span>
+</div>
+
+<div>
+    <ul ngbNav #appEntryTab="ngbNav" class="nav-pills">
+        <li ngbNavItem="criticalNotes" *ngIf="data.notes.length > 0">
+            <a class="app-detail-btn" ngbNavLink>{{'criticalNotes' | translate}}</a>
+            <ng-template ngbNavContent>
+                <evt-note *ngFor="let note of data.notes" [data]="note"></evt-note>
+            </ng-template>
+        </li>
+        <li ngbNavItem="notSignificantRdg" *ngIf="notSignificantRdg.length > 0">
+            <a class="app-detail-btn" ngbNavLink>{{'ortographicVariants' | translate}}</a>
+            <ng-template ngbNavContent>
+                <span class="d-block" *ngFor="let el of notSignificantRdg">
+                    <evt-reading [data]="el"></evt-reading>
+                    <span *ngFor="let witID of el.witIDs" class="font-italic"> {{ witID }} </span>
+                </span>
+            </ng-template>
+        </li>
+        <li ngbNavItem="info">
+            <a class="app-detail-btn" ngbNavLink>{{'info' | translate}}</a>
+            <ng-template ngbNavContent>
+                <div class="info-lemma-wrapper" *ngIf="data.lemma">
+                    <span>{{'metadataForLemma' | translate}} </span>
+                    <evt-reading *ngIf="data.nestedAppsIDs.length === 0" class="info-rdg" [data]="data.lemma"></evt-reading>
+                    <span *ngIf="data.nestedAppsIDs.length > 0" class="info-rdg">
+                        <ng-container *ngTemplateOutlet="nestedAppsReadingsTemplate; context: { rdgHasCounter: rdgHasCounter }"></ng-container>
+                    </span>
+                    <span class="d-block ms-2" *ngFor="let metadata of rdgMetadata | keyvalue">
+                        <span class="info-label" *ngIf="metadata.key !== 'id'">{{ metadata.key }}:</span> {{ metadata.value }}
+                    </span>
+                    <span class="d-block ms-2" *ngIf="(rdgMetadata | keyvalue).length === 0">
+                        <span class="font-italic">{{'noDataAvailable' | translate}}</span>
+                    </span>
+                </div>
+                <div>
+                    <span class="more-info-label">{{'moreInfoAboutApp' | translate}}</span>
+                    <ng-container *ngFor="let rdg of readings">
+                        <div *ngIf="(rdg.attributes | keyvalue).length !== 0" class="mb-2">
+                            <span>{{'metadataFor' | translate}} </span>
+                            <ng-container *ngIf="rdg.content.length !== 0">
+                                <evt-reading *ngIf="data.nestedAppsIDs.length === 0" class="info-rdg" [data]="rdg"></evt-reading>
+                                <ng-container *ngIf="data.nestedAppsIDs.length > 0">
+                                    <ng-container *ngFor="let c of rdg.content">
+                                        <evt-content-viewer class="info-rdg" *ngIf="!isAppEntry(c)" [content]="c"></evt-content-viewer>
+                                        <evt-reading class="info-rdg" *ngIf="isAppEntry(c)" [data]="c.lemma"></evt-reading>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                            <span *ngIf="rdg.content.length === 0" class="font-italic info-rdg">{{'omit' | translate}}</span>
+                            <span *ngIf="rdg.attributes.wit" class="d-block ms-2">
+                                <span class="info-label">{{'wit' | translate}}</span> {{rdg.attributes.wit}}
+                            </span>
+                            <ng-container *ngFor="let metadata of rdgMetadata | keyvalue">
+                                <span class="d-block ms-2" *ngIf="metadata.key !== 'wit'">
+                                    <span class="info-label">{{ metadata.key }}:</span> {{ metadata.value }}
+                                </span>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-template>
+        </li>
+        <li ngbNavItem="xml">
+            <a class="app-detail-btn" ngbNavLink>{{'xml' | translate}}</a>
+            <ng-template ngbNavContent>
+                <pre>{{ data.originalEncoding | xmlBeautify }}</pre>
+            </ng-template>
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="appEntryTab" class="tab-content"></div>
+</div>

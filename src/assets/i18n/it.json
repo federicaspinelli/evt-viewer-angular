@@ -180,8 +180,11 @@
     "clearIperlemsAll": "Pulisci selezione",
     "form": "forma",
     "etym": "Etimologia",
-    "variants": "variante",
-    "inflected": "Flessa",
+    "variants": "Forma variante",
+    "inflected": "Forma flessa",
     "gramGrp": "Categoria grammaticale",
-    "biblio": "Bibliografia"
+    "biblio": "Bibliografia",
+    "sense": "Senso",
+    "cit": "Citazione",
+    "comment": "Nota di commento" 
 }

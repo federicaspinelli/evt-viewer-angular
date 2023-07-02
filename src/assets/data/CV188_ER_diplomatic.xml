@@ -468,18 +468,18 @@
                     <!-- ########  Il lemma  ######## -->
                     
                     <form type="lemma">
-                    <orth>astalin</orth>
+                        <orth>astalin</orth>
                     </form>
                     
                     <gramGrp>
-                    <!-- Per le informazioni grammaticali da decidere tra varie forme possibili: 
-                        <pos value="noun"></pos>
-                        <pos value="noun"/>
-                        <pos value="noun">n</pos> 
-                        <pos>noun</pos> -->
-                    <pos value="noun">n</pos>
-                    <gen value="feminine">f</gen>
-                    <iType type="theme">-i</iType> <!-- oppure <iType type="theme" value="-i"></iType> -->
+                        <!-- Per le informazioni grammaticali da decidere tra varie forme possibili: 
+                            <pos value="noun"></pos>
+                            <pos value="noun"/>
+                            <pos value="noun">n</pos> 
+                            <pos>noun</pos> -->
+                        <pos value="noun">n</pos>
+                        <gen value="feminine">f</gen>
+                        <iType type="theme">-i</iType> <!-- oppure <iType type="theme" value="-i"></iType> -->
                     </gramGrp>
                     
                     <!-- ######## Le occorrenze del termine nel testo critico: per prima cosa la forma del lemma ######## -->

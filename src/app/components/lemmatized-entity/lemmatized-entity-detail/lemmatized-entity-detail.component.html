@@ -8,43 +8,35 @@
         <ng-container *ngFor="let element of data.content">
             <ul class="attributes-list">
             <!-- La classe label viene aggiunta a questo elemento li, se data.label è presente. -->
-            <li class="label" *ngIf="data.label==='form'"> {{'form' | translate}}
+            <span class="label" *ngIf="data.label==='form'">
                 <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
                 <span *ngFor="let item of element.attributes | keyvalue">
-                    <span class="label" *ngIf="item.value==='lemma'">{{'lemma' | translate}}</span>
-                    <span class="label" *ngIf="item.value==='variants'">{{'variants' | translate}}</span>
-                    <span class="label" *ngIf="item.value==='inflected'">{{'inflected' | translate}}</span>
-                    <!-- Per ogni coppia chiave-valore, viene creato un elemento span con la classe label per la chiave e l'attributo per il valore -->
-                    <!--span class="info-label">{{ item.key  | translate}}</span> {{ item.value }}:-->
-                    <!--span *ngIf="item.key==='form'" class="d-block ms-2">
-                        <span class="info-label">{{'form' | translate}}</span>
-                    </span-->
+                    <li class="label" *ngIf="item.value==='lemma'">{{'lemma' | translate}}</li>
+                    <li class="label" *ngIf="item.value==='variants'">{{'variants' | translate}}</li>
+                    <li class="label" *ngIf="item.value==='inflected'">{{'inflected' | translate}}</li>
                 </span>
-                <!--span *ngIf="element.attributes" class="d-block ms-2">
-                    <span class="info-label">{{'form' | translate}}</span> {{element.attributes}}
-                </span-->
-            </li>
+            </span>
+            <li class="label" *ngIf="data.label==='gramgrp'"> {{'gramGrp' | translate}} </li> 
             <li class="label" *ngIf="data.label==='etym'"> {{'etym' | translate}}
                 <!-- viene iterato l'oggetto attributes dell'elemento corrente dell'array con la direttiva *ngFor --> 
                 <span *ngFor="let item of element.attributes | keyvalue">{{ item.value }}
-                    <!-- Per ogni coppia chiave-valore, viene creato un elemento span con la classe label per la chiave e l'attributo per il valore -->
-                    <!--span class="info-label">{{ item.key  | translate}}</span> {{ item.value }}:-->
-                    <!--span *ngIf="item.key==='form'" class="d-block ms-2">
-                        <span class="info-label">{{'form' | translate}}</span>
-                    </span-->
                 </span>
-                <!--span *ngIf="element.attributes" class="d-block ms-2">
-                    <span class="info-label">{{'form' | translate}}</span> {{element.attributes}}
-                </span-->
             </li>
-            <span class="label" *ngIf="data.label==='gramGrp'"> {{'gramGrp' | translate}}
-               
-            </span> 
+            <li class="label" *ngIf="data.label==='sense'"> {{'sense' | translate}} </li>
+            <li class="label" *ngIf="data.label==='cit'"> {{'cit' | translate}} </li>
             <li class="label" *ngIf="data.label==='note'">
                 <span *ngFor="let item of element.attributes | keyvalue">
-                    <span class="label" *ngIf="item.value==='biblio'">{{'biblio' | translate}}</span>
+                    <span class="label" *ngIf="data.label==='note' && item.value==='biblio'">{{'biblio' | translate}}</span>
+                    <span class="label" *ngIf="data.label==='note' && item.value==='comment'">{{'comment' | translate}}</span>
+                    <span class="label" *ngIf="data.label==='note' && item.value!=='comment' && item.value!=='biblio'">{{ item.value }}</span> 
                 </span>
-            </li>        
+            </li>
+            <li class="label" *ngIf="data.label!=='form' && data.label!=='gramgrp' && data.label!=='etym' && data.label!=='sense' && data.label!=='cit' && data.label!=='note'">
+                {{ data.label }}
+                <span *ngFor="let item of element.attributes | keyvalue">
+                    <span class="label"> {{ item.value }} </span>
+                </span>
+            </li>      
             <evt-content-viewer [content]="element"></evt-content-viewer>           
             </ul>    
         </ng-container>

@@ -182,8 +182,11 @@
     "form": "Form",
     "lemma": "Lemma",
     "etym": "Ethym",
-    "variants": "Variants",
-    "inflected": "Inflected",
-    "gramGrp": "Grammatical Cathegory",
-    "biblio": "Bibliography"
+    "variants": "Variant form",
+    "inflected": "Inflected form",
+    "gramGrp": "Grammatical category",
+    "biblio": "Bibliography",
+    "sense": "Sense",
+    "cit": "Citation",
+    "comment": "Comment note" 
 }
